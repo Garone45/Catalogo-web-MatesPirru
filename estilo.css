@@ -1,0 +1,231 @@
+  /* --- ESTILOS VISUALES (PALETA VERDE) --- */
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4fcf6; /* Un blanco verdoso muy sutil de fondo */
+            color: #333;
+        }
+
+        /* PORTADA (HERO) */
+        header {
+            /* Capa verde oscura semitransparente sobre la foto */
+            background: linear-gradient(rgba(10, 50, 20, 0.6), rgba(10, 50, 20, 0.6)), url('https://images.unsplash.com/photo-1598492066826-3e75525c04b4?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;    
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* Botón Principal (Verde Yerba) */
+        .btn-accion {
+            padding: 15px 45px;
+            background-color: #2e7d32; /* Verde fuerte */
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px; /* Más redondeado */
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4);
+            border: 2px solid transparent;
+        }
+
+        .btn-accion:hover {
+            transform: scale(1.05);
+            background-color: #1b5e20; /* Verde más oscuro al pasar el mouse */
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* GRILLA DE PRODUCTOS */
+        .seccion {
+            max-width: 1200px;
+            margin: 70px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .seccion h2 {
+            font-size: 2.5rem;
+            color: #1b5e20; /* Títulos en Verde Bosque */
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #a5d6a7; /* Linea decorativa verde claro */
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .grilla-mates {
+    display: flex !important;  /* El !important fuerza a que use Flexbox sí o sí */
+    overflow-x: auto;          /* Habilita el scroll horizontal */
+    gap: 20px;                 /* Espacio entre tarjetas */
+    padding: 20px 5px;
+    
+    /* Para que el scroll sea suave en iPhone */
+    -webkit-overflow-scrolling: touch; 
+    scroll-snap-type: x mandatory;
+}
+
+.tarjeta-mate {
+    /* TAMAÑO OBLIGATORIO */
+    min-width: 280px;  /* Si no ponés esto, desaparecen */
+    width: 280px;      
+    
+    /* LA MAGIA: */
+    flex-shrink: 0;    /* Esto le dice al navegador: "PROHIBIDO APLASTARME" */
+    
+    /* Estética (lo que ya tenías) */
+    scroll-snap-align: center;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid #e8f5e9;
+    overflow: hidden; /* Para que la foto no se salga de los bordes redondeados */
+}
+
+/* Opcional: Ocultar barra de scroll abajo */
+.grilla-mates::-webkit-scrollbar {
+    display: none;
+}
+
+       
+
+        .foto-producto {
+            height: 260px;
+            background-color: #e8f5e9; /* Fondo verdecito claro para la foto */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #81c784;
+        }
+
+        .info-producto {
+            padding: 25px;
+        }
+
+        .info-producto h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+
+        .precio {
+            font-size: 1.6rem;
+            color: #2e7d32; /* Precio Verde */
+            font-weight: 800;
+            display: block;
+            margin: 15px 0;
+        }
+
+        .btn-comprar {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #25D366; /* Verde WhatsApp oficial */
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: opacity 0.3s;
+        }
+        
+        .btn-comprar:hover {
+            opacity: 0.9;
+        }
+
+        /* BENEFICIOS (Fondo Oscuro) */
+        .beneficios {
+            background-color: #1b5e20; /* Verde muy oscuro de fondo */
+            color: white;
+            padding: 80px 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            text-align: center;
+            gap: 50px;
+        }
+
+        .item-beneficio {
+            width: 280px;
+        }
+
+        .item-beneficio i {
+            font-size: 3.5rem;
+            color: #69f0ae; /* Íconos en verde menta brillante */
+            margin-bottom: 20px;
+        }
+        
+        .item-beneficio h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .item-beneficio p {
+            color: #c8e6c9; /* Texto verde muy clarito */
+            font-size: 0.95rem;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #111;
+            color: #888;
+            font-size: 0.9rem;
+        }
+.foto-producto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Magia para que recorte y no deforme */
+    object-position: center;
+}
+/* ESTILOS PARA LAS CATEGORÍAS SEPARADAS */
+
+.categoria-bloque {
+    margin-bottom: 80px; /* Espacio grande entre una categoría y otra */
+}
+
+.titulo-categoria {
+    font-size: 2rem;
+    color: #2e7d32; /* El mismo verde de tu marca */
+    text-align: left; /* Alineado a la izquierda queda muy moderno */
+    margin-bottom: 5px;
+    border-left: 5px solid #2e7d32; /* Una barrita verde al costado queda pro */
+    padding-left: 15px;
+}
+
+.subtitulo-categoria {
+    text-align: left;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 30px;
+    padding-left: 20px;
+}
+
+/* Ajuste Responsive: En celular, centrar los títulos */
+@media (max-width: 768px) {
+    .titulo-categoria, .subtitulo-categoria {
+        text-align: center;
+        border-left: none;
+        padding-left: 0;
+    }
+}
