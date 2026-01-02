@@ -1,231 +1,296 @@
-  /* --- ESTILOS VISUALES (PALETA VERDE) --- */
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4fcf6; /* Un blanco verdoso muy sutil de fondo */
-            color: #333;
-        }
-
-        /* PORTADA (HERO) */
-        header {
-            /* Capa verde oscura semitransparente sobre la foto */
-            background: linear-gradient(rgba(10, 50, 20, 0.6), rgba(10, 50, 20, 0.6)), url('https://images.unsplash.com/photo-1598492066826-3e75525c04b4?q=80&w=1470&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;    
-            height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-        }
-
-        header h1 {
-            font-size: 4.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
-            letter-spacing: 2px;
-        }
-
-        header p {
-            font-size: 1.6rem;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        /* Botón Principal (Verde Yerba) */
-        .btn-accion {
-            padding: 15px 45px;
-            background-color: #2e7d32; /* Verde fuerte */
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px; /* Más redondeado */
-            font-size: 1.3rem;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4);
-            border: 2px solid transparent;
-        }
-
-        .btn-accion:hover {
-            transform: scale(1.05);
-            background-color: #1b5e20; /* Verde más oscuro al pasar el mouse */
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        /* GRILLA DE PRODUCTOS */
-        .seccion {
-            max-width: 1200px;
-            margin: 70px auto;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .seccion h2 {
-            font-size: 2.5rem;
-            color: #1b5e20; /* Títulos en Verde Bosque */
-            margin-bottom: 50px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 2px solid #a5d6a7; /* Linea decorativa verde claro */
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-        .grilla-mates {
-    display: flex !important;  /* El !important fuerza a que use Flexbox sí o sí */
-    overflow-x: auto;          /* Habilita el scroll horizontal */
-    gap: 20px;                 /* Espacio entre tarjetas */
-    padding: 20px 5px;
-    
-    /* Para que el scroll sea suave en iPhone */
-    -webkit-overflow-scrolling: touch; 
-    scroll-snap-type: x mandatory;
+/* =========================================
+   1. CONFIGURACIÓN BASE (Reset)
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.tarjeta-mate {
-    /* TAMAÑO OBLIGATORIO */
-    min-width: 280px;  /* Si no ponés esto, desaparecen */
-    width: 280px;      
-    
-    /* LA MAGIA: */
-    flex-shrink: 0;    /* Esto le dice al navegador: "PROHIBIDO APLASTARME" */
-    
-    /* Estética (lo que ya tenías) */
-    scroll-snap-align: center;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    border: 1px solid #e8f5e9;
-    overflow: hidden; /* Para que la foto no se salga de los bordes redondeados */
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave al navegar */
 }
 
-/* Opcional: Ocultar barra de scroll abajo */
-.grilla-mates::-webkit-scrollbar {
-    display: none;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4fcf6; /* Blanco verdoso sutil */
+    color: #333;
 }
 
-       
-
-        .foto-producto {
-            height: 260px;
-            background-color: #e8f5e9; /* Fondo verdecito claro para la foto */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #81c784;
-        }
-
-        .info-producto {
-            padding: 25px;
-        }
-
-        .info-producto h3 {
-            margin: 0 0 10px 0;
-            color: #2c3e50;
-        }
-
-        .precio {
-            font-size: 1.6rem;
-            color: #2e7d32; /* Precio Verde */
-            font-weight: 800;
-            display: block;
-            margin: 15px 0;
-        }
-
-        .btn-comprar {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background-color: #25D366; /* Verde WhatsApp oficial */
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: opacity 0.3s;
-        }
-        
-        .btn-comprar:hover {
-            opacity: 0.9;
-        }
-
-        /* BENEFICIOS (Fondo Oscuro) */
-        .beneficios {
-            background-color: #1b5e20; /* Verde muy oscuro de fondo */
-            color: white;
-            padding: 80px 20px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            text-align: center;
-            gap: 50px;
-        }
-
-        .item-beneficio {
-            width: 280px;
-        }
-
-        .item-beneficio i {
-            font-size: 3.5rem;
-            color: #69f0ae; /* Íconos en verde menta brillante */
-            margin-bottom: 20px;
-        }
-        
-        .item-beneficio h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        .item-beneficio p {
-            color: #c8e6c9; /* Texto verde muy clarito */
-            font-size: 0.95rem;
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 30px;
-            background-color: #111;
-            color: #888;
-            font-size: 0.9rem;
-        }
-.foto-producto img {
+/* =========================================
+   2. BARRA DE NAVEGACIÓN (Navbar)
+   ========================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Magia para que recorte y no deforme */
-    object-position: center;
+    height: 70px; /* Altura compacta */
+    z-index: 1000;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Menú centrado (al no haber logo) */
+    
+    background-color: #1b5e20; /* VERDE OSCURO DE FONDO */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
-/* ESTILOS PARA LAS CATEGORÍAS SEPARADAS */
 
+/* El Menú de enlaces */
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 30px; /* Espacio entre palabras */
+}
+
+.menu a {
+    text-decoration: none;
+    color: #ffffff; /* Texto blanco para contrastar con el verde */
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #69f0ae; /* Verde menta brillante al pasar el mouse */
+}
+
+/* =========================================
+   3. PORTADA (Hero Section)
+   ========================================= */
+.portada {
+    /* Fondo con imagen y filtro oscuro */
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('fondo-portada.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    height: 90vh; /* Ocupa casi toda la pantalla */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+/* Logo Gigante Central (Imagen) */
+.logo-gigante {
+    width: 250px;
+    height: auto;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); /* Sombrita para despegarlo del fondo */
+}
+
+.portada p.subtitulo {
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+}
+
+.btn-coleccion {
+    padding: 12px 30px;
+    background-color: #2e7d32;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.btn-coleccion:hover {
+    background-color: #1b5e20;
+    transform: scale(1.05);
+}
+
+/* =========================================
+   4. ESTRUCTURA DEL CATÁLOGO (Categorías)
+   ========================================= */
 .categoria-bloque {
-    margin-bottom: 80px; /* Espacio grande entre una categoría y otra */
+    max-width: 1200px; /* Ancho máximo del contenido */
+    margin: 80px auto; /* Centrado en la pantalla */
+    padding: 0 20px;
 }
 
 .titulo-categoria {
     font-size: 2rem;
-    color: #2e7d32; /* El mismo verde de tu marca */
-    text-align: left; /* Alineado a la izquierda queda muy moderno */
+    color: #1b5e20;
     margin-bottom: 5px;
-    border-left: 5px solid #2e7d32; /* Una barrita verde al costado queda pro */
+    border-left: 5px solid #1b5e20;
     padding-left: 15px;
 }
 
 .subtitulo-categoria {
-    text-align: left;
     color: #666;
     font-style: italic;
     margin-bottom: 30px;
     padding-left: 20px;
 }
 
-/* Ajuste Responsive: En celular, centrar los títulos */
+/* =========================================
+   5. CARRUSEL DE PRODUCTOS (La Grilla)
+   ========================================= */
+.grilla-mates {
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: nowrap !important; /* NO bajar de renglón */
+    overflow-x: auto;             /* Scroll lateral */
+    gap: 20px;
+    padding: 20px 5px;
+    
+    /* Suavidad en móviles */
+    -webkit-overflow-scrolling: touch; 
+    
+    /* Ocultar barra de scroll fea en algunos navegadores */
+    scrollbar-width: none; 
+}
+.grilla-mates::-webkit-scrollbar {
+    display: none;
+}
+
+/* =========================================
+   6. TARJETAS DE PRODUCTO
+   ========================================= */
+.tarjeta-mate {
+    flex: 0 0 auto;   /* Tamaño rígido */
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.tarjeta-mate:hover {
+    transform: translateY(-5px); /* Se levanta un poquito al pasar el mouse */
+}
+
+/* Foto del producto */
+.foto-producto {
+    width: 100%;
+    height: 250px;
+    background-color: #e8f5e9;
+    overflow: hidden;
+}
+
+.foto-producto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorte perfecto */
+    display: block;
+}
+
+/* Información y Precio */
+.info-producto {
+    padding: 20px;
+    text-align: center;
+}
+
+.info-producto h3 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.precio {
+    font-size: 1.5rem;
+    color: #2e7d32;
+    font-weight: 800;
+    display: block;
+    margin: 10px 0 15px 0;
+}
+
+.btn-comprar {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #25D366; /* Verde WhatsApp */
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.btn-comprar:hover {
+    opacity: 0.9;
+}
+
+/* =========================================
+   7. FOOTER Y RESPONSIVE
+   ========================================= */
+footer {
+    text-align: center;
+    padding: 40px;
+    background-color: #111;
+    color: #888;
+    margin-top: 50px;
+}
+
+/* Ajustes para celulares */
 @media (max-width: 768px) {
     .titulo-categoria, .subtitulo-categoria {
         text-align: center;
         border-left: none;
         padding-left: 0;
     }
+    
+    .logo-gigante {
+        width: 200px; /* Logo más chico en celu */
+    }
+    
+    header h1 {
+        font-size: 3rem;
+    }
+}
+
+.seccion h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #1b5e20;        /* Verde oscuro */
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    /* ACÁ SAQUÉ LA LÍNEA QUE NO TE GUSTABA */
+    border: none;
+    display: block;
+    padding: 0;
+}
+/* ARREGLO DE LA BARRA DE BENEFICIOS (CONTACTO) */
+.beneficios {
+    background-color: #ffffff; /* Fondo Blanco */
+    padding: 40px 20px;        /* Mucho menos relleno (antes era 80px) */
+    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    
+    /* Línea sutil gris arriba para separar del catálogo */
+    border-top: 1px solid #eee; 
+    margin-top: 20px;
+}
+
+.item-beneficio i {
+    font-size: 3rem;       /* Íconos grandes */
+    color: #1b5e20;        /* AHORA SON VERDE OSCURO (para verse en fondo blanco) */
+    margin-bottom: 15px;
+}
+
+.item-beneficio h3 {
+    font-size: 1.1rem;
+    color: #1b5e20;        /* Título también en verde */
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.item-beneficio p {
+    color: #666;           /* Texto gris oscuro */
+    font-size: 0.9rem;
 }
