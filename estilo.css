@@ -25,47 +25,46 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 70px; /* Altura compacta */
+    height: 70px;
     z-index: 1000;
     
     display: flex;
     align-items: center;
-    justify-content: center; /* Menú centrado (al no haber logo) */
+    justify-content: center; /* Menú centrado en PC */
     
-    background-color: #1b5e20; /* VERDE OSCURO DE FONDO */
+    background-color: #1b5e20; /* VERDE OSCURO */
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* El Menú de enlaces */
 .menu {
     display: flex;
     list-style: none;
-    gap: 30px; /* Espacio entre palabras */
+    gap: 30px;
 }
 
 .menu a {
     text-decoration: none;
-    color: #ffffff; /* Texto blanco para contrastar con el verde */
+    color: #ffffff;
     font-weight: 500;
     font-size: 1.1rem;
+    white-space: nowrap; /* Evita que el texto se parta en dos renglones */
     transition: color 0.3s;
 }
 
 .menu a:hover {
-    color: #69f0ae; /* Verde menta brillante al pasar el mouse */
+    color: #69f0ae;
 }
 
 /* =========================================
    3. PORTADA (Hero Section)
    ========================================= */
 .portada {
-    /* Fondo con imagen y filtro oscuro */
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('fondo-portada.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     
-    height: 90vh; /* Ocupa casi toda la pantalla */
+    height: 90vh;
     
     display: flex;
     flex-direction: column;
@@ -75,12 +74,11 @@ body {
     color: white;
 }
 
-/* Logo Gigante Central (Imagen) */
 .logo-gigante {
     width: 250px;
     height: auto;
     margin-bottom: 20px;
-    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); /* Sombrita para despegarlo del fondo */
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
 }
 
 .portada p.subtitulo {
@@ -88,6 +86,7 @@ body {
     font-weight: 300;
     margin-bottom: 30px;
     text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+    padding: 0 20px; /* Para que no toque los bordes en celu */
 }
 
 .btn-coleccion {
@@ -106,12 +105,24 @@ body {
 }
 
 /* =========================================
-   4. ESTRUCTURA DEL CATÁLOGO (Categorías)
+   4. ESTRUCTURA Y TÍTULOS
    ========================================= */
 .categoria-bloque {
-    max-width: 1200px; /* Ancho máximo del contenido */
-    margin: 80px auto; /* Centrado en la pantalla */
+    max-width: 1200px;
+    margin: 80px auto;
     padding: 0 20px;
+}
+
+.seccion h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #1b5e20;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    display: block;
+    padding: 0;
 }
 
 .titulo-categoria {
@@ -130,35 +141,25 @@ body {
 }
 
 /* =========================================
-   5. CARRUSEL DE PRODUCTOS (La Grilla)
+   5. CARRUSEL DE PRODUCTOS
    ========================================= */
 .grilla-mates {
     display: flex !important;
     flex-direction: row;
-    flex-wrap: nowrap !important; /* NO bajar de renglón */
-    overflow-x: auto;             /* Scroll lateral */
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
     gap: 20px;
     padding: 20px 5px;
-    
-    /* Suavidad en móviles */
     -webkit-overflow-scrolling: touch; 
-    
-    /* Ocultar barra de scroll fea en algunos navegadores */
     scrollbar-width: none; 
 }
-.grilla-mates::-webkit-scrollbar {
-    display: none;
-}
+.grilla-mates::-webkit-scrollbar { display: none; }
 
-/* =========================================
-   6. TARJETAS DE PRODUCTO
-   ========================================= */
 .tarjeta-mate {
-    flex: 0 0 auto;   /* Tamaño rígido */
+    flex: 0 0 auto;
     width: 280px;
     min-width: 280px;
     max-width: 280px;
-    
     background: white;
     border-radius: 20px;
     overflow: hidden;
@@ -166,11 +167,8 @@ body {
     transition: transform 0.3s;
 }
 
-.tarjeta-mate:hover {
-    transform: translateY(-5px); /* Se levanta un poquito al pasar el mouse */
-}
+.tarjeta-mate:hover { transform: translateY(-5px); }
 
-/* Foto del producto */
 .foto-producto {
     width: 100%;
     height: 250px;
@@ -181,15 +179,11 @@ body {
 .foto-producto img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Recorte perfecto */
+    object-fit: cover;
     display: block;
 }
 
-/* Información y Precio */
-.info-producto {
-    padding: 20px;
-    text-align: center;
-}
+.info-producto { padding: 20px; text-align: center; }
 
 .info-producto h3 {
     margin: 0 0 10px 0;
@@ -209,20 +203,54 @@ body {
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #25D366; /* Verde WhatsApp */
+    background-color: #25D366;
     color: white;
     text-decoration: none;
     border-radius: 10px;
     font-weight: bold;
     transition: opacity 0.3s;
 }
+.btn-comprar:hover { opacity: 0.9; }
 
-.btn-comprar:hover {
-    opacity: 0.9;
+/* =========================================
+   6. BENEFICIOS (Clean Look)
+   ========================================= */
+.beneficios {
+    background-color: #ffffff;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    border-top: 1px solid #eee; 
+    margin-top: 20px;
+}
+
+.item-beneficio {
+    text-align: center;
+    max-width: 250px;
+}
+
+.item-beneficio i {
+    font-size: 3rem;
+    color: #1b5e20;
+    margin-bottom: 15px;
+}
+
+.item-beneficio h3 {
+    font-size: 1.1rem;
+    color: #1b5e20;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.item-beneficio p {
+    color: #666;
+    font-size: 0.9rem;
 }
 
 /* =========================================
-   7. FOOTER Y RESPONSIVE
+   7. FOOTER
    ========================================= */
 footer {
     text-align: center;
@@ -232,65 +260,51 @@ footer {
     margin-top: 50px;
 }
 
-/* Ajustes para celulares */
+/* =========================================
+   8. AJUSTES PARA CELULAR (SUPER PATCH)
+   ========================================= */
 @media (max-width: 768px) {
+
+    /* --- Arreglo del Menú que se cortaba --- */
+    .navbar {
+        justify-content: flex-start; /* Alinea a la izquierda */
+        overflow-x: auto;            /* Permite deslizar si no entra */
+        padding: 0 15px;             /* Un poco de aire a los costados */
+    }
+    
+    .menu {
+        gap: 20px;        /* Achica el espacio entre palabras */
+        width: max-content; /* Ocupa lo que necesite, no se comprime */
+    }
+
+    /* --- Arreglo de Títulos y Textos --- */
     .titulo-categoria, .subtitulo-categoria {
         text-align: center;
         border-left: none;
         padding-left: 0;
     }
     
+    .seccion h2 {
+        font-size: 2rem; /* Título catálogo un poco más chico */
+    }
+    
+    /* --- Arreglo del Logo Gigante --- */
     .logo-gigante {
-        width: 200px; /* Logo más chico en celu */
+        width: 180px; /* Logo más chico en el celu */
     }
     
-    header h1 {
-        font-size: 3rem;
+    /* --- Arreglo de Beneficios (Íconos Gigantes) --- */
+    .beneficios {
+        gap: 30px;
+        padding: 30px 15px;
+    }
+
+    .item-beneficio i {
+        font-size: 2.2rem; /* Ícono mucho más chico */
+        margin-bottom: 10px;
+    }
+
+    .item-beneficio p {
+        padding: 0 10px; /* Margen para que se lea bien */
     }
 }
-
-.seccion h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #1b5e20;        /* Verde oscuro */
-    margin-bottom: 50px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    
-    /* ACÁ SAQUÉ LA LÍNEA QUE NO TE GUSTABA */
-    border: none;
-    display: block;
-    padding: 0;
-}
-/* ARREGLO DE LA BARRA DE BENEFICIOS (CONTACTO) */
-.beneficios {
-    background-color: #ffffff; /* Fondo Blanco */
-    padding: 40px 20px;        /* Mucho menos relleno (antes era 80px) */
-    
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px;
-    
-    /* Línea sutil gris arriba para separar del catálogo */
-    border-top: 1px solid #eee; 
-    margin-top: 20px;
-}
-
-.item-beneficio i {
-    font-size: 3rem;       /* Íconos grandes */
-    color: #1b5e20;        /* AHORA SON VERDE OSCURO (para verse en fondo blanco) */
-    margin-bottom: 15px;
-}
-
-.item-beneficio h3 {
-    font-size: 1.1rem;
-    color: #1b5e20;        /* Título también en verde */
-    margin-bottom: 5px;
-    font-weight: 700;
-}
-
-.item-beneficio p {
-    color: #666;           /* Texto gris oscuro */
-    font-size: 0.9rem;
-}   
