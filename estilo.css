@@ -8,46 +8,54 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Desplazamiento suave al navegar */
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4fcf6; /* Blanco verdoso sutil */
+    background-color: #f4fcf6;
     color: #333;
 }
 
 /* =========================================
-   2. BARRA DE NAVEGACIÓN (Navbar)
+   2. BARRA DE NAVEGACIÓN (Estilo App)
    ========================================= */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 70px;
+    height: 60px; /* Un poco más compacta */
     z-index: 1000;
     
     display: flex;
     align-items: center;
-    justify-content: center; /* Menú centrado en PC */
+    justify-content: space-between; /* Ícono a izq, menú a der */
+    padding: 0 20px;
     
     background-color: #1b5e20; /* VERDE OSCURO */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Ícono del logo a la izquierda */
+.logo-icon img {
+    height: 35px; /* Tamaño del ícono */
+    width: auto;
+    display: block;
 }
 
 .menu {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 25px;
 }
 
 .menu a {
     text-decoration: none;
     color: #ffffff;
     font-weight: 500;
-    font-size: 1.1rem;
-    white-space: nowrap; /* Evita que el texto se parta en dos renglones */
+    font-size: 1rem;
+    white-space: nowrap;
     transition: color 0.3s;
 }
 
@@ -72,6 +80,7 @@ body {
     align-items: center;
     text-align: center;
     color: white;
+    padding-top: 60px; /* Para que no quede tapado por la barra */
 }
 
 .logo-gigante {
@@ -86,7 +95,7 @@ body {
     font-weight: 300;
     margin-bottom: 30px;
     text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
-    padding: 0 20px; /* Para que no toque los bordes en celu */
+    padding: 0 20px;
 }
 
 .btn-coleccion {
@@ -105,24 +114,79 @@ body {
 }
 
 /* =========================================
-   4. ESTRUCTURA Y TÍTULOS
+   4. NUEVA SECCIÓN: CATEGORÍAS VISUALES
    ========================================= */
-.categoria-bloque {
+.seccion {
+    padding: 60px 20px;
     max-width: 1200px;
-    margin: 80px auto;
-    padding: 0 20px;
+    margin: 0 auto;
 }
 
 .seccion h2 {
     text-align: center;
     font-size: 2.5rem;
     color: #1b5e20;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    border: none;
-    display: block;
-    padding: 0;
+}
+
+/* La cuadrícula de 2x2 */
+.grilla-categorias {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
+    gap: 20px; /* Espacio entre tarjetas */
+}
+
+/* Cada tarjeta de categoría */
+.tarjeta-categoria {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    
+    height: 180px; /* Altura fija para que sean cuadraditas */
+    border-radius: 20px; /* Bordes redondeados estilo app */
+    overflow: hidden;
+    position: relative;
+    
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.tarjeta-categoria:hover {
+    transform: scale(1.03); /* Efecto zoom sutil al pasar el mouse */
+}
+
+/* Capa oscura para que el texto se lea bien sobre la foto */
+.tarjeta-categoria::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4); /* Filtro negro al 40% */
+    z-index: 1;
+}
+
+/* El título de la categoría */
+.tarjeta-categoria h3 {
+    position: relative;
+    z-index: 2; /* Por encima del filtro oscuro */
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    margin: 0;
+    background-size: cover;   
+    background-position: center;
+}
+
+/* =========================================
+   5. ESTRUCTURA DEL CATÁLOGO (Mates)
+   ========================================= */
+.categoria-bloque {
+    margin-bottom: 60px;
 }
 
 .titulo-categoria {
@@ -141,7 +205,7 @@ body {
 }
 
 /* =========================================
-   5. CARRUSEL DE PRODUCTOS
+   6. CARRUSEL DE PRODUCTOS
    ========================================= */
 .grilla-mates {
     display: flex !important;
@@ -213,7 +277,7 @@ body {
 .btn-comprar:hover { opacity: 0.9; }
 
 /* =========================================
-   6. BENEFICIOS (Clean Look)
+   7. BENEFICIOS (Clean Look)
    ========================================= */
 .beneficios {
     background-color: #ffffff;
@@ -250,7 +314,7 @@ body {
 }
 
 /* =========================================
-   7. FOOTER
+   8. FOOTER
    ========================================= */
 footer {
     text-align: center;
@@ -261,23 +325,21 @@ footer {
 }
 
 /* =========================================
-   8. AJUSTES PARA CELULAR (SUPER PATCH)
+   9. AJUSTES PARA CELULAR Y TABLET
    ========================================= */
 @media (max-width: 768px) {
-
-    /* --- Arreglo del Menú que se cortaba --- */
     .navbar {
-        justify-content: flex-start; /* Alinea a la izquierda */
-        overflow-x: auto;            /* Permite deslizar si no entra */
-        padding: 0 15px;             /* Un poco de aire a los costados */
+        padding: 0 15px;
     }
     
     .menu {
-        gap: 20px;        /* Achica el espacio entre palabras */
-        width: max-content; /* Ocupa lo que necesite, no se comprime */
+        gap: 15px;
+    }
+    
+    .menu a {
+        font-size: 0.9rem;
     }
 
-    /* --- Arreglo de Títulos y Textos --- */
     .titulo-categoria, .subtitulo-categoria {
         text-align: center;
         border-left: none;
@@ -285,26 +347,35 @@ footer {
     }
     
     .seccion h2 {
-        font-size: 2rem; /* Título catálogo un poco más chico */
+        font-size: 2rem;
     }
     
-    /* --- Arreglo del Logo Gigante --- */
     .logo-gigante {
-        width: 180px; /* Logo más chico en el celu */
+        width: 180px;
     }
     
-    /* --- Arreglo de Beneficios (Íconos Gigantes) --- */
     .beneficios {
         gap: 30px;
         padding: 30px 15px;
     }
 
     .item-beneficio i {
-        font-size: 2.2rem; /* Ícono mucho más chico */
+        font-size: 2.2rem;
         margin-bottom: 10px;
     }
 
     .item-beneficio p {
-        padding: 0 10px; /* Margen para que se lea bien */
+        padding: 0 10px;
+    }
+}
+
+/* Ajuste para pantallas más grandes: que las categorías se pongan en fila */
+@media (min-width: 769px) {
+    .grilla-categorias {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas en PC */
+        gap: 30px;
+    }
+    .tarjeta-categoria {
+        height: 250px; /* Más altas en PC */
     }
 }
