@@ -209,26 +209,53 @@ body {
    ========================================= */
 .grilla-mates {
     display: flex !important;
-    flex-direction: row;
-    flex-wrap: nowrap !important;
-    overflow-x: auto;
+    flex-wrap: nowrap !important; /* Obliga a estar en fila */
+    overflow-x: scroll !important; /* "scroll" OBLIGA a mostrar la barra siempre */
     gap: 20px;
-    padding: 20px 5px;
-    -webkit-overflow-scrolling: touch; 
-    scrollbar-width: none; 
+    padding: 20px 20px; /* Espacio interno */
+    padding-bottom: 25px !important; /* Espacio EXTRA abajo para que entre la barra de scroll */
+    
+    /* ESTO ASEGURA QUE SE VEA LA BARRA EN CHROME Y SAFARI */
+    scrollbar-width: auto !important; 
+    -webkit-overflow-scrolling: touch;
 }
-.grilla-mates::-webkit-scrollbar { display: none; }
+.grilla-mates::-webkit-scrollbar {
+    height: 12px !important; /* Altura de la barra */
+    display: block !important; /* Que se vea SI o SI */
+}
+.grilla-mates::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color del fondo del riel */
+    border-radius: 10px;
+}
+.grilla-mates::-webkit-scrollbar-thumb {
+    background: #2e7d32; /* Color de la barra (VERDE) */
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+}
+.grilla-mates::-webkit-scrollbar-thumb:hover {
+    background: #1b5e20; /* Verde más oscuro al pasar el mouse */
+}
+
 
 .tarjeta-mate {
-    flex: 0 0 auto;
-    width: 280px;
-    min-width: 280px;
-    max-width: 280px;
+    /* 1. LA REGLA DE ORO PARA EL SCROLL */
+    /* "No crecer (0), No encogerse (0), Tamaño automático base (auto)" */
+    flex: 0 0 auto; 
+    
+    /* 2. TAMAÑO FIJO OBLIGATORIO */
+    width: 280px;      /* Ancho fijo */
+    min-width: 280px;  /* Refuerzo para que nadie lo achique */
+    max-width: 280px;  /* Refuerzo para que nadie lo agrande */
+    
+    /* Estética */
     background: white;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s;
+    
+    /* Separación si se pegan mucho */
+    margin-right: 5px; 
 }
 
 .tarjeta-mate:hover { transform: translateY(-5px); }
@@ -379,3 +406,4 @@ footer {
         height: 250px; /* Más altas en PC */
     }
 }
+
