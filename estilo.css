@@ -417,7 +417,7 @@ footer {
     }
 
     .logo-gigante {
-        width: 180px;
+        width: 150px; /* Lo achiqué un poquito más para que no moleste */
     }
 
     .beneficios {
@@ -432,6 +432,13 @@ footer {
 
     .item-beneficio p {
         padding: 0 10px;
+    }
+
+    /* --- ACÁ ESTÁ EL ARREGLO DE LA PORTADA --- */
+    .portada {
+        background-attachment: scroll; 
+        background-position: center; 
+        height: 60vh; 
     }
 }
 
