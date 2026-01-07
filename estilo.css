@@ -12,9 +12,13 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   font-family: 'Montserrat', sans-serif;
     background-color: #f4fcf6;
     color: #333;
+}
+h1, h2, h3, .precio, .logo-gigante, .titulo-categoria {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px; /* Un poquito de aire entre letras queda muy fino */
 }
 
 /* =========================================
@@ -208,16 +212,15 @@ body {
    6. CARRUSEL DE PRODUCTOS
    ========================================= */
 .grilla-mates {
-    display: flex !important;
-    flex-wrap: nowrap !important; /* Obliga a estar en fila */
-    overflow-x: scroll !important; /* "scroll" OBLIGA a mostrar la barra siempre */
-    gap: 20px;
-    padding: 20px 20px; /* Espacio interno */
-    padding-bottom: 25px !important; /* Espacio EXTRA abajo para que entre la barra de scroll */
+    display: flex; /* Alinea uno al lado del otro */
+    flex-wrap: nowrap; /* IMPORTANTE: Prohíbe que bajen al renglón de abajo */
+    overflow-x: auto; /* Habilita el scroll horizontal */
+    gap: 20px; /* Espacio entre tarjetas */
+    padding: 20px 5px; /* Un poco de aire para que no se corte la sombra */
     
-    /* ESTO ASEGURA QUE SE VEA LA BARRA EN CHROME Y SAFARI */
-    scrollbar-width: auto !important; 
-    -webkit-overflow-scrolling: touch;
+    /* Opcional: Esto le da un efecto "imán" tipo app de celular al deslizar */
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch; /* Suavidad en iPhone */
 }
 .grilla-mates::-webkit-scrollbar {
     height: 12px !important; /* Altura de la barra */
@@ -238,43 +241,40 @@ body {
 
 
 .tarjeta-mate {
-    /* 1. LA REGLA DE ORO PARA EL SCROLL */
-    /* "No crecer (0), No encogerse (0), Tamaño automático base (auto)" */
-    flex: 0 0 auto; 
+    flex: 0 0 auto; /* CRUCIAL: Esto dice "No me achiques ni me estires" */
+    width: 280px; /* Ancho FIJO para todas las tarjetas. (Podés poner 300px si querés) */
+    scroll-snap-align: start; /* Para el efecto imán */
     
-    /* 2. TAMAÑO FIJO OBLIGATORIO */
-    width: 280px;      /* Ancho fijo */
-    min-width: 280px;  /* Refuerzo para que nadie lo achique */
-    max-width: 280px;  /* Refuerzo para que nadie lo agrande */
-    
-    /* Estética */
-    background: white;
-    border-radius: 20px;
+    /* Mantenemos la alineación interna que hicimos antes */
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-    
-    /* Separación si se pegan mucho */
-    margin-right: 5px; 
-}
-
+}   
 .tarjeta-mate:hover { transform: translateY(-5px); }
 
 .foto-producto {
     width: 100%;
-    height: 250px;
-    background-color: #e8f5e9;
-    overflow: hidden;
+    height: 300px; /* Altura FIJA para todas las fotos. Podés probar 250px si las querés más chicas */
+    overflow: hidden; /* Si la foto es más grande, esconde lo que sobra */
 }
 
 .foto-producto img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* MAGIA: Esto hace que la foto llene el espacio sin estirarse ni deformarse (hace un recorte inteligente) */
     display: block;
 }
 
-.info-producto { padding: 20px; text-align: center; }
+.info-producto {
+    display: flex;
+    flex-direction: column; /* Apila título, precio y botón */
+    flex-grow: 1; /* TRUCO: Hace que este bloque crezca para llenar el espacio vacío */
+    padding: 15px;
+    text-align: center;
+}
 
 .info-producto h3 {
     margin: 0 0 10px 0;
@@ -291,15 +291,14 @@ body {
 }
 
 .btn-comprar {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #25D366;
+    margin-top: auto; /* TRUCO FINAL: Empuja el botón al fondo del contenedor */
+    /* Acá abajo van tus estilos visuales del botón (color, padding, etc) */
+    background-color: #2ecc71; 
     color: white;
+    padding: 10px 20px;
     text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    transition: opacity 0.3s;
+    border-radius: 5px;
+    display: inline-block; /* Importante para que tome el margen */
 }
 .btn-comprar:hover { opacity: 0.9; }
 
