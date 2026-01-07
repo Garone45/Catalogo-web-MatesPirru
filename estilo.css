@@ -1,6 +1,4 @@
-/* =========================================
-   1. CONFIGURACIÓN BASE (Reset)
-   ========================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,13 +10,20 @@ html {
 }
 
 body {
-   font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #f4fcf6;
     color: #333;
 }
-h1, h2, h3, .precio, .logo-gigante, .titulo-categoria {
+
+h1,
+h2,
+h3,
+.precio,
+.logo-gigante,
+.titulo-categoria {
     font-family: 'Playfair Display', serif;
-    letter-spacing: 1px; /* Un poquito de aire entre letras queda muy fino */
+    letter-spacing: 1px;
+    
 }
 
 /* =========================================
@@ -29,21 +34,24 @@ h1, h2, h3, .precio, .logo-gigante, .titulo-categoria {
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px; /* Un poco más compacta */
+    height: 60px;
+
     z-index: 1000;
-    
+
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Ícono a izq, menú a der */
+    justify-content: space-between;
+    /* Ícono a izq, menú a der */
     padding: 0 20px;
-    
-    background-color: #1b5e20; /* VERDE OSCURO */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+
+    background-color: #1b5e20;
+    /* VERDE OSCURO */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Ícono del logo a la izquierda */
 .logo-icon img {
-    height: 35px; /* Tamaño del ícono */
+    height: 35px;
     width: auto;
     display: block;
 }
@@ -71,34 +79,36 @@ h1, h2, h3, .precio, .logo-gigante, .titulo-categoria {
    3. PORTADA (Hero Section)
    ========================================= */
 .portada {
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/fondo-portada.webp');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/fondo-portada.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
+    background-attachment: fixed;
+
     height: 90vh;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
-    padding-top: 60px; /* Para que no quede tapado por la barra */
+    padding-top: 60px;
+    /* Para que no quede tapado por la barra */
 }
 
 .logo-gigante {
     width: 250px;
     height: auto;
     margin-bottom: 20px;
-    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
 }
 
 .portada p.subtitulo {
     font-size: 1.6rem;
     font-weight: 300;
     margin-bottom: 30px;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
     padding: 0 20px;
 }
 
@@ -117,9 +127,7 @@ h1, h2, h3, .precio, .logo-gigante, .titulo-categoria {
     transform: scale(1.05);
 }
 
-/* =========================================
-   4. NUEVA SECCIÓN: CATEGORÍAS VISUALES
-   ========================================= */
+
 .seccion {
     padding: 60px 20px;
     max-width: 1200px;
@@ -138,8 +146,9 @@ h1, h2, h3, .precio, .logo-gigante, .titulo-categoria {
 /* La cuadrícula de 2x2 */
 .grilla-categorias {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
-    gap: 20px; /* Espacio entre tarjetas */
+    grid-template-columns: repeat(2, 1fr);
+     gap: 20px;
+    /* Espacio entre tarjetas */
 }
 
 /* Cada tarjeta de categoría */
@@ -148,47 +157,52 @@ h1, h2, h3, .precio, .logo-gigante, .titulo-categoria {
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    
-    height: 180px; /* Altura fija para que sean cuadraditas */
-    border-radius: 20px; /* Bordes redondeados estilo app */
+
+    height: 180px;
+    /* Altura fija para que sean cuadraditas */
+    border-radius: 20px;
+    /* Bordes redondeados estilo app */
     overflow: hidden;
     position: relative;
-    
+
     background-size: cover;
     background-position: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s;
 }
 
 .tarjeta-categoria:hover {
-    transform: scale(1.03); /* Efecto zoom sutil al pasar el mouse */
-}
+    transform: scale(1.03);
+  }
 
-/* Capa oscura para que el texto se lea bien sobre la foto */
+
 .tarjeta-categoria::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.4); /* Filtro negro al 40% */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    /* Filtro negro al 40% */
     z-index: 1;
 }
 
-/* El título de la categoría */
+
 .tarjeta-categoria h3 {
     position: relative;
-    z-index: 2; /* Por encima del filtro oscuro */
+    z-index: 2;
+
     color: white;
     font-size: 1.5rem;
     font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     margin: 0;
-    background-size: cover;   
+    background-size: cover;
     background-position: center;
 }
 
-/* =========================================
-   5. ESTRUCTURA DEL CATÁLOGO (Mates)
-   ========================================= */
+
 .categoria-bloque {
     margin-bottom: 60px;
 }
@@ -212,66 +226,90 @@ h1, h2, h3, .precio, .logo-gigante, .titulo-categoria {
    6. CARRUSEL DE PRODUCTOS
    ========================================= */
 .grilla-mates {
-    display: flex; /* Alinea uno al lado del otro */
-    flex-wrap: nowrap; /* IMPORTANTE: Prohíbe que bajen al renglón de abajo */
-    overflow-x: auto; /* Habilita el scroll horizontal */
-    gap: 20px; /* Espacio entre tarjetas */
-    padding: 20px 5px; /* Un poco de aire para que no se corte la sombra */
+    display: flex;
+
+    flex-wrap: nowrap;
+   
+    overflow-x: auto;
+    /* Habilita el scroll horizontal */
+    gap: 20px;
+    /* Espacio entre tarjetas */
+    padding: 20px 5px;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
     
-    /* Opcional: Esto le da un efecto "imán" tipo app de celular al deslizar */
-    scroll-snap-type: x mandatory; 
-    -webkit-overflow-scrolling: touch; /* Suavidad en iPhone */
 }
+
 .grilla-mates::-webkit-scrollbar {
-    height: 12px !important; /* Altura de la barra */
-    display: block !important; /* Que se vea SI o SI */
+    height: 12px !important;
+   
+    display: block !important;
+
 }
+
 .grilla-mates::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Color del fondo del riel */
+    background: #f1f1f1;
+
     border-radius: 10px;
 }
+
 .grilla-mates::-webkit-scrollbar-thumb {
-    background: #2e7d32; /* Color de la barra (VERDE) */
+    background: #2e7d32;
+
     border-radius: 10px;
     border: 2px solid #f1f1f1;
 }
+
 .grilla-mates::-webkit-scrollbar-thumb:hover {
-    background: #1b5e20; /* Verde más oscuro al pasar el mouse */
+    background: #1b5e20;
+
 }
 
 
 .tarjeta-mate {
-    flex: 0 0 auto; /* CRUCIAL: Esto dice "No me achiques ni me estires" */
-    width: 280px; /* Ancho FIJO para todas las tarjetas. (Podés poner 300px si querés) */
-    scroll-snap-align: start; /* Para el efecto imán */
-    
-    /* Mantenemos la alineación interna que hicimos antes */
+    flex: 0 0 auto;
+
+    width: 280px;
+
+    scroll-snap-align: start;
+
+
+
     display: flex;
     flex-direction: column;
     background-color: #fff;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-}   
-.tarjeta-mate:hover { transform: translateY(-5px); }
+}
+
+.tarjeta-mate:hover {
+    transform: translateY(-5px);
+}
 
 .foto-producto {
     width: 100%;
-    height: 300px; /* Altura FIJA para todas las fotos. Podés probar 250px si las querés más chicas */
-    overflow: hidden; /* Si la foto es más grande, esconde lo que sobra */
+    height: 300px;
+
+    overflow: hidden;
+
 }
 
 .foto-producto img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* MAGIA: Esto hace que la foto llene el espacio sin estirarse ni deformarse (hace un recorte inteligente) */
+    object-fit: cover;
+
     display: block;
 }
 
 .info-producto {
     display: flex;
-    flex-direction: column; /* Apila título, precio y botón */
-    flex-grow: 1; /* TRUCO: Hace que este bloque crezca para llenar el espacio vacío */
+    flex-direction: column;
+
+    flex-grow: 1;
+
     padding: 15px;
     text-align: center;
 }
@@ -291,47 +329,50 @@ h1, h2, h3, .precio, .logo-gigante, .titulo-categoria {
 }
 
 .btn-comprar {
-    margin-top: auto; /* TRUCO FINAL: Empuja el botón al fondo del contenedor */
-    /* Acá abajo van tus estilos visuales del botón (color, padding, etc) */
-    background-color: #2ecc71; 
+    margin-top: auto;
+
+    background-color: #2ecc71;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
-    display: inline-block; /* Importante para que tome el margen */
-}
-.btn-comprar:hover { opacity: 0.9; }
+    display: inline-block;
 
-/* =========================================
-   7. BENEFICIOS (Clean Look)
-   ========================================= */
+}
+
+.btn-comprar:hover {
+    opacity: 0.9;
+}
+
+
 .beneficios {
-    background-color: #ffffff;
-    padding: 40px 20px;
+    background-color: #f9f9f9;
+
+    padding: 60px 20px;
     display: flex;
     justify-content: center;
+    gap: 50px;
+
     flex-wrap: wrap;
-    gap: 40px;
-    border-top: 1px solid #eee; 
-    margin-top: 20px;
+
+    text-align: center;
 }
 
 .item-beneficio {
-    text-align: center;
-    max-width: 250px;
+    max-width: 300px;
 }
 
 .item-beneficio i {
     font-size: 3rem;
-    color: #1b5e20;
-    margin-bottom: 15px;
+
+    color: #2ecc71;
+
+    margin-bottom: 20px;
 }
 
 .item-beneficio h3 {
-    font-size: 1.1rem;
-    color: #1b5e20;
-    margin-bottom: 5px;
-    font-weight: 700;
+    margin-bottom: 10px;
+    color: #333;
 }
 
 .item-beneficio p {
@@ -339,9 +380,7 @@ h1, h2, h3, .precio, .logo-gigante, .titulo-categoria {
     font-size: 0.9rem;
 }
 
-/* =========================================
-   8. FOOTER
-   ========================================= */
+
 footer {
     text-align: center;
     padding: 40px;
@@ -357,29 +396,30 @@ footer {
     .navbar {
         padding: 0 15px;
     }
-    
+
     .menu {
         gap: 15px;
     }
-    
+
     .menu a {
         font-size: 0.9rem;
     }
 
-    .titulo-categoria, .subtitulo-categoria {
+    .titulo-categoria,
+    .subtitulo-categoria {
         text-align: center;
         border-left: none;
         padding-left: 0;
     }
-    
+
     .seccion h2 {
         font-size: 2rem;
     }
-    
+
     .logo-gigante {
         width: 180px;
     }
-    
+
     .beneficios {
         gap: 30px;
         padding: 30px 15px;
@@ -398,11 +438,13 @@ footer {
 /* Ajuste para pantallas más grandes: que las categorías se pongan en fila */
 @media (min-width: 769px) {
     .grilla-categorias {
-        grid-template-columns: repeat(4, 1fr); /* 4 columnas en PC */
+        grid-template-columns: repeat(4, 1fr);
+        /* 4 columnas en PC */
         gap: 30px;
     }
+
     .tarjeta-categoria {
-        height: 250px; /* Más altas en PC */
+        height: 250px;
+        /* Más altas en PC */
     }
 }
-
