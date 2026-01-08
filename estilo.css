@@ -488,3 +488,10 @@ footer {
         /* Más altas en PC */
     }
 }
+/* Efecto de "Zoom" al mantener apretado en el celular */
+.foto-producto img:active {
+    transform: scale(1.4); /* Se agranda un 40% */
+    transition: transform 0.2s; /* Suave */
+    z-index: 999; /* Se pone por encima de todo */
+    position: relative;
+}
