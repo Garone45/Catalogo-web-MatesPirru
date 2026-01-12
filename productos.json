@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "categoria": "imperial",
+    "nombre": "Imperial Cuero Lisos",
+    "precio": 35000,
+    "imagen": "img/imperial-liso-bordo.webp"
+  },
+  {
+    "id": 2,
+    "categoria": "imperial",
+    "nombre": "Imperial Apliques Cincelado",
+    "precio": 28000,
+    "imagen": "img/imperial-aplique-bordo.webp"
+  },
+  {
+    "id": 3,
+    "categoria": "imperial",
+    "nombre": "Imperial Apliques Alpaca",
+    "precio": 35000,
+    "imagen": "img/imperial-apliques.webp"
+  }
+  ,
+  {
+    "id": 4,
+    "categoria": "torpedo",
+    "nombre": "Torpedo Cuero Suela",
+    "precio": 25000,
+    "imagen": "img/torpedo-suela.webp"
+  },
+  {
+    "id": 5,
+    "categoria": "torpedo",
+    "nombre": "Torpedo Virola Bronce",
+    "precio": 25000,
+    "imagen": "img/torpedo-bronce.webp"
+  },
+  {
+    "id": 6,
+    "categoria": "torpedo",
+    "nombre": "Torpedo Virola Bronce Bordo",
+    "precio": 25000,
+    "imagen": "img/torpedo-bronce-bordo.webp"
+  },
+  {
+    "id": 7,
+    "categoria": "torpedo",
+    "nombre": "Torpedo Apliques Alpaca",
+    "precio": 25000,
+    "imagen": "img/torpedo-apliques.webp"
+  },
+  {
+    "id": 8,
+    "categoria": "torpedo",
+    "nombre": "Torpedo Criollo Base Cuero",
+    "precio": 25000,
+    "imagen": "img/torpedo-criollo.webp"
+  }
+  ,
+  {
+    "id": 9,
+    "categoria": "camionero",
+    "nombre": "Camionero Repujado Cincelado",
+    "precio": 28000,
+    "imagen": "img/camionero-cincelado-repujado.webp"
+  },
+  {
+    "id": 10,
+    "categoria": "camionero",
+    "nombre": "Camionero Repujado Cincelado",
+    "precio": 28000,
+    "imagen": "img/camionero-repujado-cincelado.webp"
+  }
+]
