@@ -5,7 +5,7 @@
 ![Vista Previa del Sitio](./img/preview.png)
 
 Web oficial de catálogo de productos para **MatesPirru**. 
-Este proyecto es una solución digital para exhibir productos artesanales (Mates, Termos y Accesorios) permitiendo a los clientes visualizar el stock y concretar compras directamente vía WhatsApp.
+Este proyecto es una solución digital para exhibir productos artesanales (Mates, Termos y Accesorios) permitiendo a los clientes visualizar el producto y concretar compras directamente vía WhatsApp.
 
 ## 🚀 Características Principales
 
