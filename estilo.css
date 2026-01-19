@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 
 * {
     margin: 0;
@@ -5,17 +8,16 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
 
 body {
     margin: 0;      /* Elimina el marco blanco alrededor de toda la página */
     padding: 0;
-    font-family: 'Montserrat', sans-serif; /* (Tu fuente actual) */
-    background-color: #fff;
+    font-family: 'Montserrat', sans-serif; 
+    background-color:#dcedc9;
     overflow-x: hidden; /* Evita que aparezca scroll horizontal fantasma */
 }
+
+
 
 h1,
 h2,
@@ -274,28 +276,21 @@ h3,
     
 }
 
-.grilla-mates::-webkit-scrollbar {
-    height: 12px !important;
-   
-    display: block !important;
-
-}
-
 .grilla-mates::-webkit-scrollbar-track {
-    background: #f1f1f1;
-
+    background:#dcedc9; /* Ahora el carril es invisible */
     border-radius: 10px;
 }
 
+/* EL DEDO (La parte que se mueve) */
 .grilla-mates::-webkit-scrollbar-thumb {
-    background: #2e7d32;
-
+    background-color: #dcedc9; /* Tu verde oscuro */
     border-radius: 10px;
-    border: 2px solid #f1f1f1;
+    border: 2px solid transparent; /* <--- Hacemos el borde invisible */
+    background-clip: content-box; /* Truco pro: hace que el borde transparente funcione como margen */
 }
 
 .grilla-mates::-webkit-scrollbar-thumb:hover {
-    background: #1b5e20;
+    background:#dcedc9;
 
 }
 
@@ -307,7 +302,7 @@ h3,
 
     scroll-snap-align: start;
 
-
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  
 
     display: flex;
     flex-direction: column;
@@ -318,7 +313,10 @@ h3,
 }
 
 .tarjeta-mate:hover {
-    transform: translateY(-5px);
+    
+    transform: translateY(-10px); /* Sube 10 pixeles */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Sombra más fuerte abajo */
+    cursor: pointer;
 }
 
 .foto-producto {
@@ -326,6 +324,7 @@ h3,
     height: 300px;
 
     overflow: hidden;
+    
 
 }
 
@@ -420,6 +419,32 @@ footer {
     background-color: #111;
     color: #888;
     margin-top: 50px;
+}
+/* CONTENEDOR CENTRADO */
+.contenedor-buscador {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0; /* Espacio arriba y abajo */
+}
+
+/* EL INPUT DEL BUSCADOR */
+#input-buscador {
+    width: 80%; /* Ocupa casi todo el ancho (en celu se ve bien) */
+    max-width: 500px; /* Pero que no se haga gigante en PC */
+    padding: 12px 20px;
+    border: 2px solid #2e8b57; /* Verde MatesPirru */
+    border-radius: 25px; /* Bordes redondos estilo Google */
+    font-size: 16px;
+    outline: none; /* Sacamos el borde azul feo al hacer clic */
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+
+/* EFECTO AL HACER CLICK */
+#input-buscador:focus {
+    background-color: #f0fff4; /* Un verde muy clarito de fondo */
+    box-shadow: 0 0 15px rgba(46, 139, 87, 0.4);
 }
 
 /* =========================================
