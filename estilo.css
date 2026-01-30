@@ -17,8 +17,6 @@ body {
     overflow-x: hidden; /* Evita que aparezca scroll horizontal fantasma */
 }
 
-
-
 h1,
 h2,
 h3,
@@ -96,44 +94,34 @@ h3,
 }
 
 /* =========================================
-   3. PORTADA (Hero Section)
+   3. PORTADA (Hero Section - Fija)
    ========================================= */
 .portada {
+    /* ACÁ ES DONDE TENÉS QUE REVISAR EL NOMBRE DE LA FOTO */
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/fondo-portada.webp');
+    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-
-    height: 90vh;
+    background-attachment: fixed; /* Efecto Parallax (el fondo se queda quieto al scrollear) */
     
-    margin-top: 0 !important; /* Fuerza a que no haya margen arriba */
-    padding-top: 80px; /* Asegura espacio para que la barra no tape el logo */
-    overflow: hidden; /* Corta cualquier cosa que se quiera escapar de la caja */
+    height: 90vh; /* Altura de la pantalla */
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
-    padding-top: 60px;
-    /* Para que no quede tapado por la barra */
-}
-.logo {
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: white;
-    text-decoration: none;
-    transition: transform 0.3s ease;
-}
-.logo:hover {
-    transform: scale(1.1); /* Se agranda un poquito al pasar el mouse */
+    
+    /* Ajuste para que no la tape la barra de navegación */
+    margin-top: 0; 
+    padding-top: 60px; 
 }
 
+/* Estilos del Logo y Texto (que ya tenías) */
 .logo-gigante {
     width: 250px;
-    display: block;
-    margin-top: 0;
     height: auto;
     margin-bottom: 20px;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
@@ -147,6 +135,33 @@ h3,
     padding: 0 20px;
 }
 
+.logo:hover {
+    transform: scale(1.1); /* Se agranda un poquito al pasar el mouse */
+}
+
+.portada {
+    /* ACÁ ESTÁ TU FOTO DE FONDO */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/fondo-portada.webp');
+    
+    /* Configuración para que se vea bien */
+    background-size: cover;       /* Cubre toda la pantalla */
+    background-position: center;  /* Se centra */
+    background-repeat: no-repeat; /* No se repite */
+    background-attachment: fixed; /* Efecto Parallax (el fondo queda quieto al bajar) */
+    
+    height: 90vh; /* Altura: 90% de la pantalla */
+    
+    /* Flexbox para centrar el logo y texto */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    
+    margin-top: 0 !important; 
+    padding-top: 60px; /* Para que la barra de navegación no tape nada */
+}
 .btn-coleccion {
     padding: 12px 30px;
     background-color: #2e7d32;
@@ -519,4 +534,70 @@ footer {
     transition: transform 0.2s; /* Suave */
     z-index: 999; /* Se pone por encima de todo */
     position: relative;
+}
+/* =========================================
+   NUEVO: ESTILOS DEL CARRUSEL HERO
+   (Agregalo al final de tu CSS)
+   ========================================= */
+
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 85vh; /* Altura de la portada */
+    min-height: 500px;
+    overflow: hidden;
+    background-color: #2e7d32; /* Verde de fondo por si tarda en cargar */
+    margin-top: 60px; /* IMPORTANTE: Para que la barra de navegación no tape la foto */
+}
+
+.slide {
+    position: absolute; /* Clave para que se apilen una arriba de la otra */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-size: cover; /* Que la foto cubra todo */
+    background-position: center center;
+    
+    opacity: 0; /* Invisibles por defecto */
+    transition: opacity 2s ease-in-out; /* El efecto suave de cambio */
+    z-index: 0;
+
+    /* Para centrar el texto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide.activa {
+    opacity: 1; /* La foto activa se vuelve visible */
+    z-index: 1;
+}
+
+.contenido-hero {
+    text-align: center;
+    color: white;
+    text-shadow: 0px 4px 15px rgba(0,0,0,0.9); /* Sombra fuerte para leer bien */
+    padding: 20px;
+    z-index: 2; /* Texto siempre arriba de la foto */
+}
+
+.contenido-hero h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.contenido-hero p {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+    .hero-slider { height: 65vh; } 
+    .contenido-hero h1 { font-size: 2.8rem; }
+    .contenido-hero p { font-size: 1.3rem; }
 }

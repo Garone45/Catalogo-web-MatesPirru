@@ -1,46 +1,27 @@
 // --- VARIABLES GLOBALES ---
-// 1. NUEVO: Creamos una variable vacía para guardar los datos y usarlos en el buscador
-let inventarioGlobal = [];
-
-const contenedorBuscador = document.getElementById('resultados-busqueda'); // (Asegurate de crear este div en tu HTML)
+let inventarioGlobal = []; 
 const inputBuscador = document.getElementById('input-buscador');
+
+// --- FUNCIONES ---
+
 /**
  * Función: cargarCategoria
- * Propósito: Abstraer la lógica de renderizado para reutilizarla con distintos datasets.
- * Parámetros:
- * - todosLosMates: Array de objetos (origen de datos).
- * - categoriaAFiltrar: String para coincidencia estricta en el filtro.
- * - idDelContenedor: String del ID en el HTML donde se inyectará el resultado.
+ * Dibuja los productos de una categoría específica en su contenedor.
  */
-function cargarCategoria(todosLosMates, categoriaAFiltrar, idDelContenedor) {
-
-    // 1. SELECCIÓN DEL NODO DOM
-    // Crea una referencia en memoria al elemento HTML específico.
+function cargarCategoria(todosLosMates, categoriaAFiltrar, idDelContenedor) {       
     const contenedor = document.getElementById(idDelContenedor);
+    
+    // Si no existe el contenedor en el HTML, salimos para no dar error
+    if (!contenedor) return; 
 
-    // 2. VALIDACIÓN DE EXISTENCIA
-    // Si el ID no existe en el HTML, retorna undefined para evitar romper la ejecución (Error Handling).
-    if (!contenedor) return;
-
-    // 3. FILTRADO DE DATOS (Array Method)
-    // Crea un nuevo array ('matesFiltrados') que contiene solo los objetos 
-    // cuya propiedad 'categoria' coincide estrictamente (===) con el parámetro solicitado.
     const matesFiltrados = todosLosMates.filter(mate => mate.categoria === categoriaAFiltrar);
 
-    // 4. ITERACIÓN Y RENDERIZADO
-    // Ejecuta una función por cada elemento del array filtrado.
     matesFiltrados.forEach(mate => {
-
-        // Formateo de datos numéricos a String con formato local (moneda).
         const precioLindo = mate.precio.toLocaleString('es-AR');
-
-        // 5. CONSTRUCCIÓN DEL DOM VIRTUAL (Template String)
-        // Se utilizan Backticks (``) para permitir interpolación de variables (${}).
-        // Se definen las clases CSS (.tarjeta-mate) que el navegador pintará al renderizar.
         const tarjeta = `
             <div class="tarjeta-mate">
                 <div class="foto-producto">
-                    <img src="${mate.imagen}" alt="${mate.nombre}">
+                    <img src="${mate.imagen}" alt="${mate.nombre}" loading="lazy">
                 </div>
                 <div class="info-producto">
                     <h3>${mate.nombre}</h3>
@@ -51,43 +32,32 @@ function cargarCategoria(todosLosMates, categoriaAFiltrar, idDelContenedor) {
                     </a>
                 </div>
             </div>`;
-
-        // 6. INYECCIÓN AL DOM (Parsing & Repaint)
-        // Toma el String HTML generado y lo inserta como hijo del nodo contenedor.
-        // El navegador parsea las etiquetas y aplica los estilos CSS inmediatamente.
         contenedor.innerHTML += tarjeta;
     });
 }
 
-/** * 2.  Función renderizarBusqueda
- * Propósito: Mostrar los resultados del buscador. 
- * Diferencia: Esta NO filtra por categoría, dibuja todo lo que recibe.
+/** * Función: renderizarBusqueda
+ * Muestra los resultados de la búsqueda y limpia TODAS las categorías.
  */
 function renderizarBusqueda(listaDeResultados) {
-    // A. Limpiamos el contenedor de búsqueda antes de dibujar
-    const contenedorResultados = document.getElementById('contenedor-productos'); // OJO: Usamos el contenedor principal o uno nuevo
+    // 1. LIMPIEZA TOTAL: Borramos el contenido de TODAS las grillas
+    const idsLimpieza = [
+        'grilla-imperiales', 'grilla-torpedos', 'grilla-camioneros', 
+        'grilla-criollos', 'grilla-materas', 'grilla-termos', 'grilla-yerbas'
+    ];
 
-    // B. Estrategia de UX: 
-    // Si hay búsqueda, limpiamos TODO el HTML de productos para mostrar solo resultados
-    // Si no hay búsqueda, tendríamos que volver a cargar las categorías (más complejo)
-    // Para simplificar: Vamos a usar un contenedor especial para resultados o limpiar los otros.
+    idsLimpieza.forEach(id => {
+        const div = document.getElementById(id);
+        if(div) div.innerHTML = "";
+    });
+    
+    // 2. Si no hay resultados, cortamos acá
+    if(listaDeResultados.length === 0) return;
 
-    // Vamos a hacerlo simple: Si busco, borro las grillas de categorías y muestro resultados.
-    document.getElementById('grilla-imperiales').innerHTML = "";
-    document.getElementById('grilla-torpedos').innerHTML = "";
-    document.getElementById('grilla-camioneros').innerHTML = "";
-
-    // Si no hay resultados, mostramos mensaje
-    if (listaDeResultados.length === 0) {
-        // Podrías mostrar un mensaje de error en algún div
-        return;
-    }
-
-    // Usamos el ID de alguna grilla para mostrar los resultados (o un div genérico)
-    const zonaDeResultados = document.getElementById('grilla-imperiales'); // Reusamos este espacio por ahora
+    // 3. Usamos la primera grilla para mostrar los resultados
+    const zonaDeResultados = document.getElementById('grilla-imperiales'); 
 
     listaDeResultados.forEach(mate => {
-        // (ACÁ COPIAMOS TU MISMA LÓGICA DE TARJETA) - PRINCIPIO DRY (podríamos optimizarlo después)
         const precioLindo = mate.precio.toLocaleString('es-AR');
         const tarjeta = `
             <div class="tarjeta-mate">
@@ -104,56 +74,80 @@ function renderizarBusqueda(listaDeResultados) {
     });
 }
 
+
 // --- EJECUCIÓN PRINCIPAL (Entry Point) ---
 
-// 1. SOLICITUD HTTP (Fetch API)
-// Inicia una petición asíncrona GET para recuperar el recurso JSON local.
 fetch('./productos.json')
     .then(respuesta => respuesta.json())
     .then(datos => {
-
-        // 3. NUEVO: Guardamos los datos en la variable global
+        // Guardamos todo en la variable global
         inventarioGlobal = datos;
 
-        // Ejecutamos la carga inicial (lo que ya tenías)
+        // CARGA INICIAL DE TODAS LAS CATEGORÍAS
         cargarCategoria(datos, 'imperial', 'grilla-imperiales');
         cargarCategoria(datos, 'torpedo', 'grilla-torpedos');
         cargarCategoria(datos, 'camionero', 'grilla-camioneros');
+        // Nuevas categorías:
+        cargarCategoria(datos, 'criollo', 'grilla-criollos');
+        cargarCategoria(datos, 'matera', 'grilla-materas');
+        cargarCategoria(datos, 'termo', 'grilla-termos');
+        cargarCategoria(datos, 'yerba', 'grilla-yerbas');
     })
-    .catch(error => console.error("Error:", error));
+    .catch(error => console.error("Error cargando productos:", error));
 
-// 4. NUEVO: EL EVENT LISTENER DEL BUSCADOR
-// Esto va FUERA del fetch, porque el input ya existe en el HTML
-if (inputBuscador) {
+
+// --- LÓGICA DEL BUSCADOR ---
+
+if(inputBuscador) {
     inputBuscador.addEventListener('input', (e) => {
-        const loQueEscribio = e.target.value.toLowerCase();
+        const loQueEscribio = e.target.value.toLowerCase().trim();
 
-        // Si borró todo, recargamos la página o volvemos a llamar a las funciones originales
-        if (loQueEscribio === "") {
-            document.getElementById('grilla-imperiales').innerHTML = "";
-            document.getElementById('grilla-torpedos').innerHTML = "";
-            document.getElementById('grilla-camioneros').innerHTML = "";
+        // CASO 1: Si borró todo, RECARGAMOS todo el catálogo
+        if(loQueEscribio === "") {
+            // Limpiamos visualmente primero
+            const idsLimpieza = ['grilla-imperiales', 'grilla-torpedos', 'grilla-camioneros', 'grilla-criollos', 'grilla-materas', 'grilla-termos', 'grilla-yerbas'];
+            idsLimpieza.forEach(id => {
+                const div = document.getElementById(id);
+                if(div) div.innerHTML = "";
+            });
 
+            // Volvemos a llenar todo
             cargarCategoria(inventarioGlobal, 'imperial', 'grilla-imperiales');
             cargarCategoria(inventarioGlobal, 'torpedo', 'grilla-torpedos');
             cargarCategoria(inventarioGlobal, 'camionero', 'grilla-camioneros');
+            cargarCategoria(inventarioGlobal, 'criollo', 'grilla-criollos');
+            cargarCategoria(inventarioGlobal, 'matera', 'grilla-materas');
+            cargarCategoria(inventarioGlobal, 'termo', 'grilla-termos');
+            cargarCategoria(inventarioGlobal, 'yerba', 'grilla-yerbas');
             return;
         }
 
-        // CASO 2: El usuario está escribiendo
-        const textoUsuario = e.target.value.toLowerCase().trim(); // El .trim() saca espacios al final
-
-        // 1. Convertimos lo que escribiste en un Array de palabras
-        // Si escribís "imperial alpaca", esto crea: ["imperial", "alpaca"]
-        const palabrasBusqueda = textoUsuario.split(" ");
-
+        // CASO 2: El usuario está escribiendo -> Buscamos
+        const palabrasBusqueda = loQueEscribio.split(" ");
+        
         const resultados = inventarioGlobal.filter(producto => {
             const nombreProducto = producto.nombre.toLowerCase();
-
-            // 2. La Magia: Chequeamos que CADA palabra (every) esté en el nombre
             return palabrasBusqueda.every(palabra => nombreProducto.includes(palabra));
         });
 
         renderizarBusqueda(resultados);
     });
+}
+
+
+// --- LÓGICA DEL CARRUSEL HERO AUTOMÁTICO ---
+
+const slides = document.querySelectorAll('.slide');
+
+if (slides.length > 0) {
+    let indiceActual = 0; 
+    const tiempoEntreFotos = 5000; 
+
+    function siguienteSlide() {
+        slides[indiceActual].classList.remove('activa');
+        indiceActual = (indiceActual + 1) % slides.length;
+        slides[indiceActual].classList.add('activa');
+    }
+
+    setInterval(siguienteSlide, tiempoEntreFotos);
 }
