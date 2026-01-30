@@ -151,3 +151,28 @@ if (slides.length > 0) {
 
     setInterval(siguienteSlide, tiempoEntreFotos);
 }
+// --- LÓGICA DE LAS FLECHAS DEL CARRUSEL ---
+
+// 1. Buscamos todos los botones de flecha
+const botonesFlecha = document.querySelectorAll('.btn-flecha');
+
+botonesFlecha.forEach(boton => {
+    boton.addEventListener('click', () => {
+        // A. Identificamos si es flecha derecha o izquierda
+        const esDerecha = boton.classList.contains('flecha-der');
+        
+        // B. Buscamos la grilla que está AL LADO del botón (su hermana)
+        const contenedorPadre = boton.parentElement;
+        const grilla = contenedorPadre.querySelector('.grilla-mates');
+        
+        // C. Definimos cuánto mover (el ancho de una tarjeta aprox + espacio)
+        const anchoDesplazamiento = 300; 
+        
+        // D. Movemos el scroll
+        if (esDerecha) {
+            grilla.scrollBy({ left: anchoDesplazamiento, behavior: 'smooth' });
+        } else {
+            grilla.scrollBy({ left: -anchoDesplazamiento, behavior: 'smooth' });
+        }
+    });
+});

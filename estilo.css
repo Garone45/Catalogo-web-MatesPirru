@@ -1,3 +1,6 @@
+/* =========================================
+   1. CONFIGURACIÓN GENERAL (RESET)
+   ========================================= */
 html {
     scroll-behavior: smooth;
 }
@@ -8,28 +11,22 @@ html {
     box-sizing: border-box;
 }
 
-
 body {
-    margin: 0;      /* Elimina el marco blanco alrededor de toda la página */
+    margin: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif; 
-    background-color:#dcedc9;
-    overflow-x: hidden; /* Evita que aparezca scroll horizontal fantasma */
+    font-family: 'Montserrat', sans-serif;
+    background-color: #dcedc9; /* COLOR DE FONDO DE LA PÁGINA */
+    overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-.precio,
-.logo-gigante,
-.titulo-categoria {
+/* Tipografía elegante */
+h1, h2, h3, .precio, .logo-gigante, .titulo-categoria {
     font-family: 'Playfair Display', serif;
     letter-spacing: 1px;
-    
 }
 
 /* =========================================
-   2. BARRA DE NAVEGACIÓN (Estilo App)
+   2. BARRA DE NAVEGACIÓN
    ========================================= */
 .navbar {
     position: fixed;
@@ -37,22 +34,15 @@ h3,
     left: 0;
     width: 100%;
     height: 60px;
-    margin: 0;
-    transition: all 0.3s ease;
-    z-index: 1000;
+    background-color: #1b5e20; /* Verde Oscuro */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* Ícono a izq, menú a der */
     padding: 0 20px;
-
-    background-color: #1b5e20;
-    /* VERDE OSCURO */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Ícono del logo a la izquierda */
 .logo-icon img {
     height: 35px;
     width: auto;
@@ -70,42 +60,45 @@ h3,
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: 500;
-    padding: 5px 0; /* Un poquito de aire arriba y abajo */
-    position: relative; /* Necesario para el truco de la línea */
+    padding: 5px 0;
+    position: relative;
     transition: color 0.3s ease;
 }
 
 .menu a:hover {
-    color: #e0e0e0; /* Se vuelve un gris muy clarito (casi blanco) */
-    text-shadow: 0 0 10px rgba(255,255,255,0.5); /* Un brillo sutil tipo neón */
+    color: #e0e0e0;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
 }
+
 .menu a::after {
     content: '';
     position: absolute;
-    width: 0; /* Empieza invisible (ancho 0) */
-    height: 2px; /* Grosor de la línea */
+    width: 0;
+    height: 2px;
     bottom: 0;
     left: 0;
-    background-color: white; /* Color de la línea */
-    transition: width 0.3s ease-in-out; /* La animación de crecimiento */
+    background-color: white;
+    transition: width 0.3s ease-in-out;
 }
+
 .menu a:hover::after {
-    width: 100%; /* Al pasar el mouse, crece al 100% del ancho */
+    width: 100%;
 }
 
 /* =========================================
-   3. PORTADA (Hero Section - Fija)
+   3. PORTADA (ESTÁTICA / FIJA)
    ========================================= */
 .portada {
-    /* ACÁ ES DONDE TENÉS QUE REVISAR EL NOMBRE DE LA FOTO */
+    /* IMPORTANTE: Chequeá que el nombre de la foto sea correcto en tu carpeta */
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/fondo-portada.webp');
-    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Efecto Parallax (el fondo se queda quieto al scrollear) */
+    background-attachment: fixed; /* Efecto Parallax */
     
-    height: 90vh; /* Altura de la pantalla */
+    height: 90vh;
+    margin-top: 0 !important;
+    padding-top: 60px;
     
     display: flex;
     flex-direction: column;
@@ -113,18 +106,18 @@ h3,
     align-items: center;
     text-align: center;
     color: white;
-    
-    /* Ajuste para que no la tape la barra de navegación */
-    margin-top: 0; 
-    padding-top: 60px; 
 }
 
-/* Estilos del Logo y Texto (que ya tenías) */
 .logo-gigante {
     width: 250px;
     height: auto;
     margin-bottom: 20px;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
+}
+
+.logo-gigante:hover {
+    transform: scale(1.05);
 }
 
 .portada p.subtitulo {
@@ -135,33 +128,6 @@ h3,
     padding: 0 20px;
 }
 
-.logo:hover {
-    transform: scale(1.1); /* Se agranda un poquito al pasar el mouse */
-}
-
-.portada {
-    /* ACÁ ESTÁ TU FOTO DE FONDO */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/fondo-portada.webp');
-    
-    /* Configuración para que se vea bien */
-    background-size: cover;       /* Cubre toda la pantalla */
-    background-position: center;  /* Se centra */
-    background-repeat: no-repeat; /* No se repite */
-    background-attachment: fixed; /* Efecto Parallax (el fondo queda quieto al bajar) */
-    
-    height: 90vh; /* Altura: 90% de la pantalla */
-    
-    /* Flexbox para centrar el logo y texto */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    
-    margin-top: 0 !important; 
-    padding-top: 60px; /* Para que la barra de navegación no tape nada */
-}
 .btn-coleccion {
     padding: 12px 30px;
     background-color: #2e7d32;
@@ -177,7 +143,9 @@ h3,
     transform: scale(1.05);
 }
 
-
+/* =========================================
+   4. CATEGORÍAS
+   ========================================= */
 .seccion {
     padding: 60px 20px;
     max-width: 1200px;
@@ -193,28 +161,21 @@ h3,
     letter-spacing: 2px;
 }
 
-/* La cuadrícula de 2x2 */
 .grilla-categorias {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-     gap: 20px;
-    /* Espacio entre tarjetas */
+    gap: 20px;
 }
 
-/* Cada tarjeta de categoría */
 .tarjeta-categoria {
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-
     height: 180px;
-    /* Altura fija para que sean cuadraditas */
     border-radius: 20px;
-    /* Bordes redondeados estilo app */
     overflow: hidden;
     position: relative;
-
     background-size: cover;
     background-position: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -223,35 +184,25 @@ h3,
 
 .tarjeta-categoria:hover {
     transform: scale(1.03);
-  }
-
+}
 
 .tarjeta-categoria::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(0, 0, 0, 0.4);
-    /* Filtro negro al 40% */
     z-index: 1;
 }
-
 
 .tarjeta-categoria h3 {
     position: relative;
     z-index: 2;
-
     color: white;
     font-size: 1.5rem;
     font-weight: 700;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     margin: 0;
-    background-size: cover;
-    background-position: center;
 }
-
 
 .categoria-bloque {
     margin-bottom: 60px;
@@ -266,143 +217,151 @@ h3,
 }
 
 .subtitulo-categoria {
-    color: #666;
+    color: #444; /* Un poco más oscuro para que se lea mejor */
     font-style: italic;
     margin-bottom: 30px;
     padding-left: 20px;
 }
 
 /* =========================================
-   6. CARRUSEL DE PRODUCTOS
+   5. CATÁLOGO DE PRODUCTOS (LA DEFINITIVA)
    ========================================= */
 .grilla-mates {
     display: flex;
-
     flex-wrap: nowrap;
-   
     overflow-x: auto;
-    /* Habilita el scroll horizontal */
-    gap: 20px;
-    /* Espacio entre tarjetas */
-    padding: 20px 5px;
-
+    gap: 25px;
+    padding: 30px 20px;
     scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    
+    scrollbar-width: none; 
 }
+.grilla-mates::-webkit-scrollbar { display: none; }
 
-.grilla-mates::-webkit-scrollbar-track {
-    background:#dcedc9; /* Ahora el carril es invisible */
-    border-radius: 10px;
-}
-
-/* EL DEDO (La parte que se mueve) */
-.grilla-mates::-webkit-scrollbar-thumb {
-    background-color: #dcedc9; /* Tu verde oscuro */
-    border-radius: 10px;
-    border: 2px solid transparent; /* <--- Hacemos el borde invisible */
-    background-clip: content-box; /* Truco pro: hace que el borde transparente funcione como margen */
-}
-
-.grilla-mates::-webkit-scrollbar-thumb:hover {
-    background:#dcedc9;
-
-}
-
-
+/* --- TARJETA MÁS ANCHA (Para que la foto se agrande) --- */
 .tarjeta-mate {
     flex: 0 0 auto;
-
-    width: 280px;
-
-    scroll-snap-align: start;
-
-    transition: transform 0.3s ease, box-shadow 0.3s ease;  
-
+    width: 280px;  /* <--- Antes 260px. Al ensanchar, la foto crece. */
+    height: 460px;
+    
+    scroll-snap-align: center;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    
+    /* El mismo verde de fondo */
+    background-color: #dcedc9; 
+    
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    
+    /* Sombra para que flote sobre el fondo */
+    box-shadow: 0 10px 25px rgba(27, 94, 32, 0.15); 
+    border: 1px solid rgba(255,255,255,0.3); /* Un brillito en el borde */
+    
     overflow: hidden;
+    transition: transform 0.3s;
 }
 
 .tarjeta-mate:hover {
-    
-    transform: translateY(-10px); /* Sube 10 pixeles */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Sombra más fuerte abajo */
-    cursor: pointer;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(27, 94, 32, 0.25);
 }
 
+/* --- FOTO (Sin cortes) --- */
 .foto-producto {
     width: 100%;
-    height: 300px;
-
+    height: 300px; /* Buen espacio vertical */
+    
+    background-color: #dcedc9; /* Verde igual a la tarjeta */
+    padding: 10px; /* Un aire para que no toque los bordes */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
     
-
+    /* Línea sutil para separar foto de texto */
+    border-bottom: 1px solid rgba(0,0,0,0.05); 
 }
 
 .foto-producto img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-
-    display: block;
+    
+    /* LA SOLUCIÓN: Contain muestra TODO. 
+       Como el fondo es verde igual que la foto, no se notan los bordes. */
+    object-fit: contain; 
+    
+    /* Alineamos ABAJO. Así todos los mates apoyan en el mismo "piso" */
+    object-position: center bottom; 
+    
+    transition: transform 0.3s;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1)); /* Sombra a la silueta del mate */
 }
 
+.foto-producto img:active {
+    transform: scale(1.1);
+}
+
+/* --- INFO --- */
 .info-producto {
-    display: flex;
-    flex-direction: column;
-
-    flex-grow: 1;
-
     padding: 15px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
 }
 
 .info-producto h3 {
-    margin: 0 0 10px 0;
-    color: #2c3e50;
-    font-size: 1.2rem;
+    margin: 0;
+    font-size: 1.1rem;
+    color: #1b5e20;
+    font-weight: 700;
+    line-height: 1.2;
+    font-family: 'Playfair Display', serif;
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .precio {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #2e7d32;
     font-weight: 800;
-    display: block;
-    margin: 10px 0 15px 0;
+    margin: 5px 0;
 }
 
 .btn-comprar {
-    margin-top: auto;
-
-    background-color: #2ecc71;
+    background-color: #1b5e20;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 0;
+    width: 100%;
     text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-
+    border-radius: 8px;
+    font-weight: 600;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .btn-comprar:hover {
+    background-color: #2e7d32;
     opacity: 0.9;
+    transform: scale(1.02);
 }
 
-
+/* =========================================
+   6. BENEFICIOS Y FOOTER
+   ========================================= */
 .beneficios {
     background-color: #f9f9f9;
-
     padding: 60px 20px;
     display: flex;
     justify-content: center;
     gap: 50px;
-
     flex-wrap: wrap;
-
     text-align: center;
+    margin-top: 40px;
 }
 
 .item-beneficio {
@@ -411,9 +370,7 @@ h3,
 
 .item-beneficio i {
     font-size: 3rem;
-
     color: #2ecc71;
-
     margin-bottom: 20px;
 }
 
@@ -427,177 +384,132 @@ h3,
     font-size: 0.9rem;
 }
 
-
 footer {
     text-align: center;
     padding: 40px;
     background-color: #111;
     color: #888;
-    margin-top: 50px;
 }
-/* CONTENEDOR CENTRADO */
+
+/* =========================================
+   7. BUSCADOR
+   ========================================= */
 .contenedor-buscador {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 30px 0; /* Espacio arriba y abajo */
+    margin: 30px 0;
 }
 
-/* EL INPUT DEL BUSCADOR */
 #input-buscador {
-    width: 80%; /* Ocupa casi todo el ancho (en celu se ve bien) */
-    max-width: 500px; /* Pero que no se haga gigante en PC */
+    width: 90%;
+    max-width: 500px;
     padding: 12px 20px;
-    border: 2px solid #2e8b57; /* Verde MatesPirru */
-    border-radius: 25px; /* Bordes redondos estilo Google */
+    border: 2px solid #2e8b57;
+    border-radius: 25px;
     font-size: 16px;
-    outline: none; /* Sacamos el borde azul feo al hacer clic */
-    transition: all 0.3s ease;
+    outline: none;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
 }
 
-/* EFECTO AL HACER CLICK */
 #input-buscador:focus {
-    background-color: #f0fff4; /* Un verde muy clarito de fondo */
+    background-color: #fff;
     box-shadow: 0 0 15px rgba(46, 139, 87, 0.4);
 }
 
 /* =========================================
-   9. AJUSTES PARA CELULAR Y TABLET
+   8. MEDIA QUERIES (CELULAR)
    ========================================= */
 @media (max-width: 768px) {
-    .navbar {
-        padding: 0 15px;
-    }
-
-    .menu {
-        gap: 15px;
-    }
-
-    .menu a {
-        font-size: 0.9rem;
-    }
-
-    .titulo-categoria,
-    .subtitulo-categoria {
+    .navbar { padding: 0 15px; }
+    .menu { gap: 15px; }
+    .menu a { font-size: 0.9rem; }
+    
+    .seccion h2 { font-size: 2rem; }
+    .logo-gigante { width: 180px; }
+    
+    .titulo-categoria, .subtitulo-categoria {
         text-align: center;
         border-left: none;
         padding-left: 0;
     }
-
-    .seccion h2 {
-        font-size: 2rem;
+    
+    /* En celular la portada es más chica */
+    .portada { 
+        height: 60vh;
+        background-attachment: scroll; /* Desactiva parallax en celular para mejorar rendimiento */
     }
-
-    .logo-gigante {
-        width: 150px; /* Lo achiqué un poquito más para que no moleste */
-    }
-
-    .beneficios {
-        gap: 30px;
-        padding: 30px 15px;
-    }
-
-    .item-beneficio i {
-        font-size: 2.2rem;
-        margin-bottom: 10px;
-    }
-
-    .item-beneficio p {
-        padding: 0 10px;
-    }
-
-    /* --- ACÁ ESTÁ EL ARREGLO DE LA PORTADA --- */
-    .portada {
-        background-attachment: scroll; 
-        background-position: center; 
-        height: 60vh; 
-    }
+    
+    /* Tarjetas un poco más chicas en celular */
+    .tarjeta-mate { width: 240px; height: 450px; }
+    .foto-producto { height: 220px; }
 }
 
-/* Ajuste para pantallas más grandes: que las categorías se pongan en fila */
+/* PC: Categorías en fila de 4 */
 @media (min-width: 769px) {
     .grilla-categorias {
         grid-template-columns: repeat(4, 1fr);
-        /* 4 columnas en PC */
         gap: 30px;
     }
-
-    .tarjeta-categoria {
-        height: 250px;
-        /* Más altas en PC */
-    }
-}
-/* Efecto de "Zoom" al mantener apretado en el celular */
-.foto-producto img:active {
-    transform: scale(2.8); /* Se agranda un 40% */
-    transition: transform 0.2s; /* Suave */
-    z-index: 999; /* Se pone por encima de todo */
-    position: relative;
+    .tarjeta-categoria { height: 250px; }
 }
 /* =========================================
-   NUEVO: ESTILOS DEL CARRUSEL HERO
-   (Agregalo al final de tu CSS)
+   CONTROLES DEL CARRUSEL (FLECHAS)
    ========================================= */
 
-.hero-slider {
-    position: relative;
+/* El contenedor que mantiene todo junto */
+.contenedor-carrusel {
+    position: relative; /* Necesario para ubicar las flechas */
     width: 100%;
-    height: 85vh; /* Altura de la portada */
-    min-height: 500px;
-    overflow: hidden;
-    background-color: #2e7d32; /* Verde de fondo por si tarda en cargar */
-    margin-top: 60px; /* IMPORTANTE: Para que la barra de navegación no tape la foto */
-}
-
-.slide {
-    position: absolute; /* Clave para que se apilen una arriba de la otra */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    
-    background-size: cover; /* Que la foto cubra todo */
-    background-position: center center;
-    
-    opacity: 0; /* Invisibles por defecto */
-    transition: opacity 2s ease-in-out; /* El efecto suave de cambio */
-    z-index: 0;
-
-    /* Para centrar el texto */
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
-.slide.activa {
-    opacity: 1; /* La foto activa se vuelve visible */
-    z-index: 1;
+/* Estilo general del botón */
+.btn-flecha {
+    position: absolute; /* Flotan sobre la imagen */
+    top: 50%;
+    transform: translateY(-50%); /* Se centran verticalmente exacto */
+    
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Redondos */
+    border: none;
+    background-color: white;
+    color: #1b5e20; /* Icono verde */
+    
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Sombrita */
+    cursor: pointer;
+    z-index: 10; /* Para estar ARRIBA de las fotos */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background-color 0.2s;
+    font-size: 1.2rem;
 }
 
-.contenido-hero {
-    text-align: center;
-    color: white;
-    text-shadow: 0px 4px 15px rgba(0,0,0,0.9); /* Sombra fuerte para leer bien */
-    padding: 20px;
-    z-index: 2; /* Texto siempre arriba de la foto */
+.btn-flecha:hover {
+    background-color: #f1f1f1;
+    transform: translateY(-50%) scale(1.1); /* Crece un poquito */
 }
 
-.contenido-hero h1 {
-    font-size: 4rem;
-    margin-bottom: 10px;
-    font-weight: 800;
+.btn-flecha:active {
+    transform: translateY(-50%) scale(0.9); /* Efecto click */
 }
 
-.contenido-hero p {
-    font-size: 1.8rem;
-    font-weight: 400;
-    margin-bottom: 20px;
+/* Posiciones */
+.flecha-izq {
+    left: 0px; /* Pegada a la izquierda */
 }
 
-/* Ajuste para celulares */
+.flecha-der {
+    right: 0px; /* Pegada a la derecha */
+}
+
+/* En celular, ocultamos las flechas porque usan el dedo */
 @media (max-width: 768px) {
-    .hero-slider { height: 65vh; } 
-    .contenido-hero h1 { font-size: 2.8rem; }
-    .contenido-hero p { font-size: 1.3rem; }
+    .btn-flecha {
+        display: none;
+    }
 }

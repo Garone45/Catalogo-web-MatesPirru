@@ -42,13 +42,6 @@
     "imagen": "img/imperial-algarrobo-flejes.webp"
   },
   {
-    "id": 7,
-    "nombre": "Imperial Apliques Dinámico",
-    "categoria": "imperial",
-    "precio": 25000,
-    "imagen": "img/imperial-apliques-dinamico.webp"
-  },
-  {
     "id": 8,
     "nombre": "Imperial Bordó Clásico",
     "categoria": "imperial",
@@ -61,13 +54,6 @@
     "categoria": "imperial",
     "precio": 23000,
     "imagen": "img/imperial-bordo-apliques.webp"
-  },
-  {
-    "id": 10,
-    "nombre": "Imperial Bordó Liso",
-    "categoria": "imperial",
-    "precio": 20000,
-    "imagen": "img/imperial-liso-bordo.webp"
   },
   {
     "id": 11,
@@ -126,13 +112,6 @@
     "imagen": "img/torpedo-negro-repujado.webp"
   },
   {
-    "id": 19,
-    "nombre": "Torpedo Suela",
-    "categoria": "torpedo",
-    "precio": 18000,
-    "imagen": "img/torpedo-suela.webp"
-  },
-  {
     "id": 20,
     "nombre": "Torpedo Suela Acero",
     "categoria": "torpedo",
@@ -152,13 +131,6 @@
     "categoria": "criollo",
     "precio": 13500,
     "imagen": "img/criollo-bordo-repujado.webp"
-  },
-  {
-    "id": 23,
-    "nombre": "Mate Criollo Clásico",
-    "categoria": "criollo",
-    "precio": 12000,
-    "imagen": "img/Mate-Criollo.webp"
   },
   {
     "id": 24,
