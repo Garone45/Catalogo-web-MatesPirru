@@ -8,7 +8,7 @@ function Modal({ imagen, cerrar }) {
         <div className="modal-contenido" onClick={(e) => e.stopPropagation()}>
             {/* Botón para cerrar */}
             <button className="btn-cerrar-modal" onClick={cerrar}>
-                <i className="fa-solid fa-times"></i> X
+                <i className="fa-solid fa-times"></i> 
             </button>
             
             {/* La imagen gigante */}

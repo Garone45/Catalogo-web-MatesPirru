@@ -1,536 +1,390 @@
-    /* =========================================
-   1. CONFIGURACIÓN GENERAL (RESET)
+/* =========================================
+   1. CONFIGURACIÓN GENERAL
    ========================================= */
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap');
-   html {
-    scroll-behavior: smooth;
-}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+html { scroll-behavior: smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    margin: 0;
-    padding: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: #dcedc9; /* COLOR DE FONDO DE LA PÁGINA */
+    background-color: #dcedc9; /* Fondo verde suave */
     overflow-x: hidden;
 }
 
-/* Tipografía elegante */
-h1, h2, h3, .precio, .logo-gigante, .titulo-categoria {
+h1, h2, h3, .precio, .logo-gigante {
     font-family: 'Playfair Display', serif;
-    letter-spacing: 1px;
 }
 
 /* =========================================
-   2. BARRA DE NAVEGACIÓN
+   2. NAVBAR (MENÚ)
    ========================================= */
 .navbar {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background-color: #1b5e20; /* Verde Oscuro */
+    top: 0; left: 0; width: 100%; height: 60px;
+    background-color: #1b5e20;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     padding: 0 20px;
 }
 
-.logo-icon img {
-    height: 35px;
-    width: auto;
-    display: block;
-}
+.logo-icon img { height: 35px; width: auto; }
 
-.menu {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-}
-
+.menu { display: flex; list-style: none; gap: 25px; }
 .menu a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 500;
-    padding: 5px 0;
-    position: relative;
-    transition: color 0.3s ease;
+    color: white; text-decoration: none; font-size: 1.1rem;
+    font-weight: 500; position: relative; transition: color 0.3s;
 }
-
-.menu a:hover {
-    color: #e0e0e0;
-    text-shadow: 0 0 10px rgba(255,255,255,0.5);
-}
-
+.menu a:hover::after { width: 100%; }
 .menu a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: white;
-    transition: width 0.3s ease-in-out;
-}
-
-.menu a:hover::after {
-    width: 100%;
+    content: ''; position: absolute; width: 0; height: 2px;
+    bottom: 0; left: 0; background-color: white; transition: width 0.3s;
 }
 
 /* =========================================
-   3. PORTADA (ESTÁTICA / FIJA)
+   3. PORTADA
    ========================================= */
 .portada {
-    /* 1. ESTO ES LA MAGIA: 
-       90vh significa "ocupar el 90% de la altura del celular".
-       (Si ponés 100vh ocupa toda la pantalla, pero tapa el menú de abajo). */
-    min-height: 90vh; 
-
-    /* 2. Para que la imagen no se deforme ni se repita */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    /* 3. Para centrar el logo y el texto verticalmente */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    
-    /* 4. Un poquito de sombra para que se lea mejor si la foto es clara */
-    position: relative;
-    color: white; /* Asegura que el texto sea blanco */
+    min-height: 90vh;
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    position: relative; color: white;
 }
 
-.logo-gigante {
-    width: 250px;
-    height: auto;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
-    transition: transform 0.3s ease;
-}
-
-.logo-gigante:hover {
-    transform: scale(1.05);
-}
-
-.portada p.subtitulo {
-    font-size: 1.6rem;
-    font-weight: 300;
-    margin-bottom: 30px;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
-    padding: 0 20px;
-}
+.logo-gigante { width: 250px; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); }
+.portada p.subtitulo { font-size: 1.6rem; font-weight: 300; margin-bottom: 30px; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); }
 
 .btn-coleccion {
-    padding: 12px 30px;
-    background-color: #2e7d32;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 50px;
-    transition: transform 0.3s, background-color 0.3s;
+    padding: 12px 30px; background-color: #2e7d32; color: white;
+    text-decoration: none; font-weight: bold; border-radius: 50px;
+    transition: transform 0.3s;
 }
+.btn-coleccion:hover { background-color: #1b5e20; transform: scale(1.05); }
 
-.btn-coleccion:hover {
-    background-color: #1b5e20;
-    transform: scale(1.05);
-}
 
 /* =========================================
-   4. CATEGORÍAS
+   4. CATEGORÍAS (CON AIRE ARRIBA)
    ========================================= */
-.seccion {
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+.seccion { 
+    padding: 40px 20px; 
+    max-width: 1200px; 
+    /* ESTO ES LO NUEVO: Centra el bloque y lo empuja para abajo */
+    margin: 60px auto 0 auto; 
 }
 
-.seccion h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #1b5e20;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
+/* ... dejá el resto de .grilla-categorias igual ... */
 
+/* La grilla que organiza las categorías */
 .grilla-categorias {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Celular: 2 columnas */
     gap: 20px;
+}
+@media (min-width: 768px) {
+    .grilla-categorias { grid-template-columns: repeat(4, 1fr); /* PC: 4 columnas */ }
 }
 
 .tarjeta-categoria {
+    height: 150px; border-radius: 20px;
+    background-size: cover; background-position: center;
+    display: flex; justify-content: center; align-items: center;
+    text-decoration: none; position: relative; overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.3s;
+}
+.tarjeta-categoria:hover { transform: scale(1.03); }
+.tarjeta-categoria::before {
+    content: ''; position: absolute; top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.4); z-index: 1;
+}
+.tarjeta-categoria h3 {
+    position: relative; z-index: 2; color: white;
+    font-size: 1.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* =========================================
+   5. CARRUSEL DE PRODUCTOS (DISEÑO FINAL)
+   ========================================= */
+
+.seccion-carrusel {
+    /* ESTO ARREGLA TODO: */
+    max-width: 1200px;       /* Que no sea más ancho que esto */
+    margin: 0 auto 60px auto; /* Lo centra en la pantalla (auto) */
+    
+    padding: 0 50px; /* Espacio a los costados para que entren las flechas */
+    position: relative;
+}
+
+/* --- Título Centrado con Línea Verde --- */
+.cabecera-titulo {
     display: flex;
     justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    height: 180px;
-    border-radius: 20px;
-    overflow: hidden;
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s;
+    margin-bottom: 30px;
 }
 
-.tarjeta-categoria:hover {
-    transform: scale(1.03);
-}
-
-.tarjeta-categoria::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-}
-
-.tarjeta-categoria h3 {
-    position: relative;
-    z-index: 2;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    margin: 0;
-}
-
-.categoria-bloque {
-    margin-bottom: 60px;
-}
-
-.titulo-categoria {
+.titulo-linea {
+    font-family: 'Playfair Display', serif;
     font-size: 2rem;
     color: #1b5e20;
-    margin-bottom: 5px;
+    font-weight: 700;
     border-left: 5px solid #1b5e20;
     padding-left: 15px;
+    line-height: 1;
 }
 
-.subtitulo-categoria {
-    color: #444; /* Un poco más oscuro para que se lea mejor */
-    font-style: italic;
-    margin-bottom: 30px;
-    padding-left: 20px;
+/* --- Cuerpo Relativo (Para flechas flotantes) --- */
+.cuerpo-carrusel {
+    position: relative;
+    width: 100%;
 }
-
-/* =========================================
-   5. CATÁLOGO DE PRODUCTOS (LA DEFINITIVA)
-   ========================================= */
-.grilla-mates {
+/* --- El Riel (Tren de tarjetas) --- */
+.riel-tarjetas {
     display: flex;
-    flex-wrap: nowrap;
+    gap: 30px;
     overflow-x: auto;
-    gap: 25px;
-    padding: 30px 20px;
-    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 20px 5px;
+    
+    /* TRUQUITO: Si hay pocos mates, esto ayuda a que no se vean raros */
+    /* Pero mantenemos el scroll si hay muchos */
+    justify-content: flex-start; 
+    
     scrollbar-width: none; 
 }
-.grilla-mates::-webkit-scrollbar { display: none; }
+.riel-tarjetas::-webkit-scrollbar { display: none; }
+.izq { left: -50px; } /* Las sacamos un poco afuera del bloque de 1200px */
+.der { right: -50px; }
 
-/* --- TARJETA MÁS ANCHA (Para que la foto se agrande) --- */
-.tarjeta-mate {
-    flex: 0 0 auto;
-    width: 280px;  /* <--- Antes 260px. Al ensanchar, la foto crece. */
-    height: 460px;
-    
-    scroll-snap-align: center;
-    display: flex;
-    flex-direction: column;
-    
-    /* El mismo verde de fondo */
-    background-color: #dcedc9; 
-    
-    border-radius: 15px;
-    
-    /* Sombra para que flote sobre el fondo */
-    box-shadow: 0 10px 25px rgba(27, 94, 32, 0.15); 
-    border: 1px solid rgba(255,255,255,0.3); /* Un brillito en el borde */
-    
-    overflow: hidden;
-    transition: transform 0.3s;
-}
 
-.tarjeta-mate:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(27, 94, 32, 0.25);
-}
-
-/* --- FOTO (Sin cortes) --- */
-.foto-producto {
-    width: 100%;
-    height: 300px; /* Buen espacio vertical */
-    
-    background-color: #dcedc9; /* Verde igual a la tarjeta */
-    padding: 10px; /* Un aire para que no toque los bordes */
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    
-    /* Línea sutil para separar foto de texto */
-    border-bottom: 1px solid rgba(0,0,0,0.05); 
-}
-
-.foto-producto img {
-    width: 100%;
-    height: 100%;
-    
-    /* LA SOLUCIÓN: Contain muestra TODO. 
-       Como el fondo es verde igual que la foto, no se notan los bordes. */
-    object-fit: contain; 
-    
-    /* Alineamos ABAJO. Así todos los mates apoyan en el mismo "piso" */
-    object-position: center bottom; 
-    
-    transition: transform 0.3s;
-    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1)); /* Sombra a la silueta del mate */
-}
-
-.foto-producto img:active {
-    transform: scale(1.1);
-}
-
-/* --- INFO --- */
-.info-producto {
-    padding: 15px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-}
-
-.info-producto h3 {
-    margin: 0;
-    font-size: 1.1rem;
-    color: #1b5e20;
-    font-weight: 700;
-    line-height: 1.2;
-    font-family: 'Playfair Display', serif;
-    
-    display: -webkit-box;
-    
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.precio {
-    font-size: 1.6rem;
-    color: #2e7d32;
-    font-weight: 800;
-    margin: 5px 0;
-}
-
-.btn-comprar {
-    background-color: #1b5e20;
-    color: white;
-    padding: 12px 0;
-    width: 100%;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    display: block;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.btn-comprar:hover {
-    background-color: #2e7d32;
-    opacity: 0.9;
-    transform: scale(1.02);
-}
-
-/* =========================================
-   6. BENEFICIOS Y FOOTER
-   ========================================= */
-.beneficios {
-    background-color: #f9f9f9;
-    padding: 60px 20px;
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    flex-wrap: wrap;
-    text-align: center;
-    margin-top: 40px;
-}
-
-.item-beneficio {
-    max-width: 300px;
-}
-
-.item-beneficio i {
-    font-size: 3rem;
-    color: #2ecc71;
-    margin-bottom: 20px;
-}
-
-.item-beneficio h3 {
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.item-beneficio p {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-footer {
-    text-align: center;
-    padding: 40px;
-    background-color: #111;
-    color: #888;
-}
-
-/* =========================================
-   7. BUSCADOR
-   ========================================= */
-.contenedor-buscador {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 30px 0;
-}
-
-#input-buscador {
-    width: 90%;
-    max-width: 500px;
-    padding: 12px 20px;
-    border: 2px solid #2e8b57;
-    border-radius: 25px;
-    font-size: 16px;
-    outline: none;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-}
-
-#input-buscador:focus {
-    background-color: #fff;
-    box-shadow: 0 0 15px rgba(46, 139, 87, 0.4);
-}
-
-/* =========================================
-   8. MEDIA QUERIES (CELULAR)
-   ========================================= */
-@media (max-width: 768px) {
-    .navbar { padding: 0 15px; }
-    .menu { gap: 15px; }
-    .menu a { font-size: 0.9rem; }
-    
-    .seccion h2 { font-size: 2rem; }
-    .logo-gigante { width: 180px; }
-    
-    .titulo-categoria, .subtitulo-categoria {
-        text-align: center;
-        border-left: none;
-        padding-left: 0;
-    }
-    
-    /* En celular la portada es más chica */
-    .portada { 
-        height: 60vh;
-        background-attachment: scroll; /* Desactiva parallax en celular para mejorar rendimiento */
-    }
-    
-    /* Tarjetas un poco más chicas en celular */
-    .tarjeta-mate { width: 240px; height: 450px; }
-    .foto-producto { height: 220px; }
-}
-
-/* PC: Categorías en fila de 4 */
-@media (min-width: 769px) {
-    .grilla-categorias {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 30px;
-    }
-    .tarjeta-categoria { height: 250px; }
-}
-/* =========================================
-   CONTROLES DEL CARRUSEL (FLECHAS)
-   ========================================= */
-
-/* El contenedor que mantiene todo junto */
-.contenedor-carrusel {
-    position: relative; /* Necesario para ubicar las flechas */
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
-/* Estilo general del botón */
+/* --- FLECHAS FLOTANTES (A los costados) --- */
 .btn-flecha {
-    position: absolute; /* Flotan sobre la imagen */
-    top: 50%;
-    transform: translateY(-50%); /* Se centran verticalmente exacto */
+    position: absolute; /* Se salen del flujo normal */
+    top: 50%; /* Centradas verticalmente */
+    transform: translateY(-50%);
+    z-index: 10; /* Arriba de las fotos */
     
-    width: 45px;
-    height: 45px;
-    border-radius: 50%; /* Redondos */
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: white;
+    color: #1b5e20;
     border: none;
-    background-color: white;
-    color: #1b5e20; /* Icono verde */
-    
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Sombrita */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     cursor: pointer;
-    z-index: 10; /* Para estar ARRIBA de las fotos */
+    font-size: 1.5rem;
     
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s, background-color 0.2s;
-    font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: 0.3s;
 }
 
 .btn-flecha:hover {
-    background-color: #f1f1f1;
-    transform: translateY(-50%) scale(1.1); /* Crece un poquito */
+    background: #1b5e20;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
 }
 
-.btn-flecha:active {
-    transform: translateY(-50%) scale(0.9); /* Efecto click */
-}
+/* Ubicación exacta */
+.izq { left: -20px; } /* Un poquito afuera a la izquierda */
+.der { right: -20px; } /* Un poquito afuera a la derecha */
 
-/* Posiciones */
-.flecha-izq {
-    left: 0px; /* Pegada a la izquierda */
-}
-
-.flecha-der {
-    right: 0px; /* Pegada a la derecha */
-}
-
-
-/* En celular, ocultamos las flechas porque usan el dedo */
+/* En celular ocultamos flechas */
 @media (max-width: 768px) {
-    .btn-flecha {
-        display: none;
+    .btn-flecha { display: none; }
+    .izq, .der { display: none; }
+}
+
+/* =========================================
+   6. TARJETAS DE PRODUCTO
+   ========================================= */
+.tarjeta-mate {
+    flex-shrink: 0; /* IMPIDE QUE SE APLASTEN */
+    width: 260px; height: 450px;
+    background: white; border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex; flex-direction: column; overflow: hidden;
+    transition: transform 0.3s;
+}
+.tarjeta-mate:hover { transform: translateY(-8px); }
+
+.foto-producto {
+    height: 65%; width: 100%;
+    display: flex; justify-content: center; align-items: center;
+    overflow: hidden; background: #fff;
+}
+.foto-producto img { height: 100%; width: 100%; object-fit: cover; }
+
+.info-producto {
+    padding: 15px; text-align: center;
+    display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;
+}
+.info-producto h3 { font-size: 1.1rem; color: #1b5e20; margin: 0; }
+.precio { font-size: 1.6rem; color: #2e7d32; font-weight: 800; margin: 5px 0; }
+
+.btn-comprar {
+    background-color: #1b5e20; color: white; padding: 10px 0;
+    width: 100%; text-decoration: none; border-radius: 8px; font-weight: 600;
+    display: flex; justify-content: center; align-items: center; gap: 8px;
+}
+.btn-comprar:hover { background-color: #2e7d32; }
+
+/* =========================================
+   7. EXTRAS Y FOOTER
+   ========================================= */
+footer { text-align: center; padding: 40px; background-color: #111; color: #888; margin-top: 50px;}
+
+/* AJUSTES PARA CELULAR */
+@media (max-width: 768px) {
+    .navbar { padding: 0 15px; }
+    .menu { gap: 15px; } .menu a { font-size: 0.9rem; }
+    .portada { height: 60vh; min-height: auto; }
+    .logo-gigante { width: 180px; }
+    
+    /* En celular escondemos las flechas (se usa el dedo) */
+    .indicadores { display: none; }
+    
+    .titulo-controles h3 { font-size: 1.5rem; text-align: left; }
+    .tarjeta-mate { width: 240px; height: 420px; }
+}
+/* =========================================
+   ESTILOS RECUPERADOS (TÍTULOS Y BUSCADOR)
+   ========================================= */
+
+/* Contenedor para centrar títulos */
+.bloque-central, .bloque-separador {
+    text-align: center;
+    margin: 60px auto 40px auto; /* Aire arriba y abajo */
+    padding: 0 20px;
+    max-width: 800px;
+}
+
+/* El Título Grande (NUESTRO CATÁLOGO / EQUIPATE COMPLETO) */
+.titulo-principal-seccion {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #1b5e20;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Subtítulo chiquito */
+.subtitulo-seccion {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    color: #555;
+    font-style: italic;
+}
+
+/* --- EL BUSCADOR TIPO CÁPSULA --- */
+.buscador-lindo {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 2px solid #2e7d32; /* Borde verde */
+    border-radius: 50px; /* Bien redondo */
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 500px; /* Que no sea eterno */
+    margin: 0 auto; /* Centrado */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombrita suave */
+    transition: box-shadow 0.3s;
+}
+
+.buscador-lindo:hover, .buscador-lindo:focus-within {
+    box-shadow: 0 4px 20px rgba(46, 125, 50, 0.3); /* Resalta al tocar */
+}
+
+.icono-lupa {
+    color: #2e7d32;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.input-buscador {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+}
+
+/* Ajuste para celular */
+@media (max-width: 768px) {
+    .titulo-principal-seccion {
+        font-size: 1.8rem;
     }
 }
-/* --- AJUSTE PARA CELULARES --- */
+/* --- CONTENEDOR BLANCO QUE OCUPA TODO EL ANCHO --- */
+/* =========================================
+   BARRA DE BENEFICIOS (FONDO VERDE DE LA WEB)
+   ========================================= */
+
+.contenedor-beneficios-full {
+    /* Usamos el color de fondo de tu web */
+    background-color: #dcedc9 !important; 
+    width: 100% !important;
+    padding: 60px 0;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.fila-beneficios {
+    display: flex !important;
+    flex-direction: row !important; /* OBLIGA A LA FILA */
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1200px;
+    width: 100%;
+    gap: 10px; /* Espacio reducido para que entren bien en fila */
+}
+
+.bloque-item {
+    flex: 1; /* Reparte el ancho en 3 partes iguales */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 15px;
+}
+
+/* ÍCONOS: Mantenemos el verde fuerte para que resalte sobre el fondo claro */
+.bloque-item i {
+    font-size: 3rem;
+    color: #2e7d32; 
+    margin-bottom: 15px;
+    /* Sombrita suave para darle profundidad */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.bloque-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #1b5e20;
+    text-transform: uppercase;
+    /* Subimos a 900 para que la letra sea bien gruesa */
+    font-weight: 900; 
+    letter-spacing: 0.5px;
+}
+
+.bloque-item p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #222; /* Un color casi negro para que resalte más */
+    margin: 0;
+    /* Subimos a 600 para que deje de ser finita */
+    font-weight: 600; 
+    line-height: 1.4;
+}
+
+/* --- EN CELULAR SÍ LOS PONEMOS UNO ABAJO DEL OTRO --- */
 @media (max-width: 768px) {
-  .portada {
-    /* En celular, la hacemos más petisa para que la foto no se corte tanto */
-    min-height: 60vh !important; 
-    
-    /* Aseguramos que el centro de la foto (los mates) sea lo principal */
-    background-position: center center !important;
-  }
-  
-  /* Achicamos un poco el logo también para que no tape todo */
-  .logo-gigante {
-    width: 200px !important; 
-  }
+    .fila-beneficios {
+        flex-direction: column !important;
+        align-items: center;
+        gap: 50px;
+    }
 }
