@@ -13,3 +13,5 @@ function Portada() {
     </header>
   );
 }
+
+export default Portada; // <--- ASEGURATE DE QUE ESTA LÍNEA ESTÉ AHÍ
