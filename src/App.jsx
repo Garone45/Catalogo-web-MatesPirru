@@ -20,7 +20,7 @@ function App() {
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null);
 
   useEffect(() => {
-    fetch('/productos.json')
+    fetch('./productos.json')
       .then(res => res.json())
       .then(data => {
         setProductos(data);
@@ -51,6 +51,7 @@ function App() {
     <div>
       <Navbar />
       <Portada />
+      <div style={{ height: '100px', width: '100%', clear: 'both' }}></div>
       <Categorias />
 
       <section className="seccion">
