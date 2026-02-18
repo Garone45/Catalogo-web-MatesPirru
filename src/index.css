@@ -1,4 +1,4 @@
-/* =========================================
+    /* =========================================
    1. CONFIGURACIÓN GENERAL (RESET)
    ========================================= */
 
@@ -508,6 +508,7 @@ footer {
 .flecha-der {
     right: 0px; /* Pegada a la derecha */
 }
+
 
 /* En celular, ocultamos las flechas porque usan el dedo */
 @media (max-width: 768px) {
