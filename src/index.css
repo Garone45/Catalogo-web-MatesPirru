@@ -48,27 +48,55 @@ h1, h2, h3, .precio, .logo-gigante {
 .portada {
     position: relative;
     min-height: 90vh;
-    background-image: url('tu-foto-de-portada.jpg');
-    background-size: cover;
-    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Esto es lo nuevo: Crea la capa oscura */
-    background-color: rgba(0, 0, 0, 0.4); 
-    background-blend-mode: overlay;
+    /* Overlay para que resalte el contenido */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./img/fondo-portada.webp');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+.contenido-portada {
+    display: flex;
+    flex-direction: column; /* OBLIGA AL ORDEN: Logo -> Slogan -> Botón */
+    align-items: center;
+    gap: 25px; /* Espacio uniforme entre los elementos */
+    width: 90%;
+    max-width: 800px;
+}
+.logo-portada {
+    max-width: 280px; /* Tamaño para PC */
+    height: auto;
+    filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.3));
+}
+.eslogan-pro {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+    margin: 0;
 }
 
 .logo-gigante { width: 250px; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); }
 .portada p.subtitulo { font-size: 1.6rem; font-weight: 300; margin-bottom: 30px; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); }
 
 .btn-coleccion {
-    padding: 12px 30px; background-color: #2e7d32; color: white;
-    text-decoration: none; font-weight: bold; border-radius: 50px;
-    transition: transform 0.3s;
+    background-color: #2e7d32;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
-.btn-coleccion:hover { background-color: #1b5e20; transform: scale(1.05); }
-
+.btn-coleccion:hover {
+    background-color: #1b5e20;
+    transform: translateY(-3px);
+}
 
 /* =========================================
    4. CATEGORÍAS (CON AIRE ARRIBA)
@@ -80,30 +108,63 @@ h1, h2, h3, .precio, .logo-gigante {
 }
 
 /* La grilla que organiza las categorías */
+.seccion-categorias-top {
+    padding: 40px 20px;
+    background-color: #dcedc9; /* Fondo de la web */
+}
+
 .grilla-categorias {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Celular: 2 columnas */
+    grid-template-columns: repeat(4, 1fr); /* 4 en fila para PC */
     gap: 20px;
-}
-@media (min-width: 768px) {
-    .grilla-categorias { grid-template-columns: repeat(4, 1fr); /* PC: 4 columnas */ }
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .tarjeta-categoria {
-    height: 150px; border-radius: 20px;
-    background-size: cover; background-position: center;
-    display: flex; justify-content: center; align-items: center;
-    text-decoration: none; position: relative; overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.3s;
+    background: white;
+    border-radius: 15px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; /* Aire interno de la tarjeta */
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
-.tarjeta-categoria:hover { transform: scale(1.03); }
-.tarjeta-categoria::before {
-    content: ''; position: absolute; top:0; left:0; right:0; bottom:0;
-    background: rgba(0,0,0,0.4); z-index: 1;
+
+.tarjeta-categoria:hover {
+    transform: translateY(-5px);
 }
-.tarjeta-categoria h3 {
-    position: relative; z-index: 2; color: white;
-    font-size: 1.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+
+/* CONTENEDOR DE LA IMAGEN: Acá manejamos la "distancia" */
+.contenedor-img-cat {
+    width: 100%;
+    height: 350px; /* Antes estaba en 150px, ahora es mucho más grande */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.contenedor-img-cat img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; 
+    /* Bajamos el padding a 5px para que la imagen aproveche casi todo el recuadro */
+    padding: 5px; 
+    transition: transform 0.3s ease;
+}
+
+/* En el celular también le damos más tamaño */
+@media (max-width: 768px) {
+    .contenedor-img-cat {
+        height: 180px; /* Un tamaño generoso para que se vea bien en la mano */
+    }
+    
+    .grilla-categorias {
+        gap: 10px; /* Un poco menos de espacio entre tarjetas para ganar tamaño */
+    }
 }
 
 /* =========================================
@@ -463,32 +524,16 @@ footer { text-align: center; padding: 40px; background-color: #111; color: #888;
 }
 /* --- OPTIMIZACIÓN PARA MÓVILES (Celulares) --- */
 @media (max-width: 768px) {
-    .portada {
-        display: flex !important;
-        flex-direction: column !important; /* Uno arriba del otro */
-        align-items: center !important;    /* Todo centrado */
-        text-align: center;
-        padding: 0 20px;
+    .logo-portada {
+        max-width: 200px; /* Logo más acorde al celu */
     }
-    .logo-gigante {
-        max-width: 180px; /* Tamaño controlado para el logo */
-        margin-bottom: 20px;
+    
+    .eslogan-pro {
+        font-size: 1.3rem;
     }
-
-    .titulo-principal {
-        font-size: 2.2rem !important;
-        margin-bottom: 10px;
-    }
-
-  .eslogan-pro {
-        font-size: 1rem !important;
-        margin-bottom: 30px;
-        max-width: 90%; /* Para que no toque los bordes */
-    }
-
+    
     .btn-coleccion {
-        width: 85%; /* Botón grande y cómodo para el pulgar */
-        padding: 15px;
-        display: block;
-    }   
+        width: 100%; /* Botón ancho para fácil acceso */
+        max-width: 250px;
+    }
 }

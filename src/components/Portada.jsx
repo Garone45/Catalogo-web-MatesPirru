@@ -2,16 +2,21 @@ import React from 'react';
 
 function Portada() {
   return (
-    // CAMBIO ACÁ: Agregamos el estilo en línea (style) con la ruta con PUNTO
-    <header className="portada" style={{ backgroundImage: "url('./img/fondo-portada.webp')" }}>
+    <section className="portada" id="inicio">
+      <div className="contenido-portada">
+        {/* 1. Logo al medio */}
+        <img src="./img/logo-matespirru-blanco.webp" alt="Mates Pirru" className="logo-portada" />
         
-        <img src="./img/logo-matespirru-blanco.webp" alt="MatesPirru" className="logo-gigante" />
+        {/* 2. Slogan abajo del logo */}
+        <p className="eslogan-pro">Tradición, amigos y buenos momentos.</p>
         
-       <p className="eslogan-pro">Si elegis MastesPirru, elegiste bien.. </p>
-        
-        <a href="#mates-seccion" className="btn-coleccion">Ver Colección</a>
-    </header>
+        {/* 3. Botón abajo del slogan */}
+        <a href="#mates-seccion" className="btn-coleccion">
+          Ver Colección
+        </a>
+      </div>
+    </section>
   );
 }
 
-export default Portada; // <--- ASEGURATE DE QUE ESTA LÍNEA ESTÉ AHÍ
+export default Portada; // El export que te faltaba para el deploy
