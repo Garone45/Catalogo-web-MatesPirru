@@ -19,13 +19,18 @@ function TarjetaMate({ nombre, precio, imagen, alHacerClick }) {
         <h3>{nombre}</h3>
         <span className="precio">${precioLindo}</span>
         
-        <a 
-          href={`https://wa.me/5491138517333?text=Me%20interesa%20${nombre}`} 
+       <a 
+          /* 1. Usamos el link corto de Instagram Direct */
+          /* IMPORTANTE: Cambiá 'matespirru' por tu usuario exacto de IG */
+          href={`https://ig.me/m/matespirru`} 
+          
           className="btn-comprar" 
           target="_blank" 
           rel="noopener noreferrer"
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
         >
-          Comprar
+          Consultar
+          <i className="fa-brands fa-instagram" style={{marginLeft: '1.2px'}}></i>
         </a>
       </div>
     </div>

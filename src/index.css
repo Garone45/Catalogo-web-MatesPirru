@@ -91,23 +91,26 @@ h1, h2, h3, .precio, .logo-gigante, .titulo-categoria {
    3. PORTADA (ESTÁTICA / FIJA)
    ========================================= */
 .portada {
-    /* IMPORTANTE: Chequeá que el nombre de la foto sea correcto en tu carpeta */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/fondo-portada.webp');
+    /* 1. ESTO ES LA MAGIA: 
+       90vh significa "ocupar el 90% de la altura del celular".
+       (Si ponés 100vh ocupa toda la pantalla, pero tapa el menú de abajo). */
+    min-height: 90vh; 
+
+    /* 2. Para que la imagen no se deforme ni se repita */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Efecto Parallax */
-    
-    height: 90vh;
-    margin-top: 0 !important;
-    padding-top: 60px;
-    
+
+    /* 3. Para centrar el logo y el texto verticalmente */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
+    
+    /* 4. Un poquito de sombra para que se lea mejor si la foto es clara */
+    position: relative;
+    color: white; /* Asegura que el texto sea blanco */
 }
 
 .logo-gigante {
