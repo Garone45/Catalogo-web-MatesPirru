@@ -519,3 +519,18 @@ footer {
         display: none;
     }
 }
+/* --- AJUSTE PARA CELULARES --- */
+@media (max-width: 768px) {
+  .portada {
+    /* En celular, la hacemos más petisa para que la foto no se corte tanto */
+    min-height: 60vh !important; 
+    
+    /* Aseguramos que el centro de la foto (los mates) sea lo principal */
+    background-position: center center !important;
+  }
+  
+  /* Achicamos un poco el logo también para que no tape todo */
+  .logo-gigante {
+    width: 200px !important; 
+  }
+}
