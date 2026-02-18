@@ -13,14 +13,23 @@ function Beneficios() {
 
         <div className="bloque-item">
           <i className="fa-solid fa-credit-card"></i>
-          <h3>Cuotas sin interés</h3>
-          <p>Aceptamos transferencia bancaria.</p>
+          <h3>Pagos Seguros</h3>
+          <p>Transferencia o efectivo.</p>
         </div>
 
         <div className="bloque-item">
           <i className="fa-solid fa-leaf"></i>
           <h3>100% Artesanal</h3>
-          <p>Productos hechos a mano.</p>
+          <p>Calidad premium garantizada.</p>
+        </div>
+
+        {/* --- NUEVO BLOQUE: INSTAGRAM --- */}
+        <div className="bloque-item">
+          <a href="https://www.instagram.com/matespirru" target="_blank" rel="noopener noreferrer" className="link-ig">
+            <i className="fa-brands fa-instagram"></i>
+            <h3>Nuestra comunidad</h3>
+            <p>@MatesPirru</p>
+          </a>
         </div>
 
       </div>

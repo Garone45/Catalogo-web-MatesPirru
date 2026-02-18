@@ -50,10 +50,12 @@ function App() {
       
       {/* BOTONES DE CATEGORÍAS (Si los tenés) */}
       <Categorias />
+      
 
       {/* --- ACÁ EMPIEZAN LOS CARRUSELES --- */}
       {/* En vez de repetir código, llamamos al componente Carrusel varias veces */}
 
+      <div id="mates-seccion">
     <div className="bloque-central">
         <h2 className="titulo-principal-seccion">NUESTRO CATÁLOGO</h2>
         
@@ -67,13 +69,13 @@ function App() {
         </div>
       </div>
 
-
       <Carrusel 
         titulo="Mates Imperiales" 
         categoria="imperiales" 
         productos={productos} 
         alHacerClick={abrirZoom} 
       />
+      </div>
       <Carrusel 
         titulo="Mates Torpedos" 
         categoria="torpedo"
@@ -93,11 +95,12 @@ function App() {
         productos={productos} 
         alHacerClick={abrirZoom} 
       />
+      <div id="accesorios-seccion">
       <div className="bloque-separador">
         <h2 className="titulo-principal-seccion">EQUIPATE COMPLETO</h2>
         <p className="subtitulo-seccion">Lo mejor para acompañar tus mates</p>
       </div>
-
+      </div>
 
       <Carrusel 
         titulo="Termos" 
@@ -134,10 +137,11 @@ function App() {
         />
       )}
 
+
        <Beneficios />
 
       {/* PIE DE PÁGINA */}
-      <Footer />
+      <Footer id/>
 
     </div>
   );

@@ -10,10 +10,11 @@ function Navbar() {
 
         {/* Los enlaces del menú */}
         <ul className="menu">
-            <li><a href="#catalogo-mates">Mates</a></li>
-            <li><a href="#seccion-accesorios">Accesorios</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
+        {/* Usamos el ID de la sección con un # adelante */}
+        <li><a href="#mates-seccion">Mates</a></li>
+        <li><a href="#accesorios-seccion">Accesorios</a></li>
+        <li><a href="#footer">Contacto</a></li> 
+      </ul>
     </nav>
   );
 }

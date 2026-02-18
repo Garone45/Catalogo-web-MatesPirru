@@ -46,11 +46,17 @@ h1, h2, h3, .precio, .logo-gigante {
    3. PORTADA
    ========================================= */
 .portada {
+    position: relative;
     min-height: 90vh;
-    background-size: cover; background-position: center; background-repeat: no-repeat;
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center; text-align: center;
-    position: relative; color: white;
+    background-image: url('tu-foto-de-portada.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Esto es lo nuevo: Crea la capa oscura */
+    background-color: rgba(0, 0, 0, 0.4); 
+    background-blend-mode: overlay;
 }
 
 .logo-gigante { width: 250px; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); }
@@ -70,11 +76,8 @@ h1, h2, h3, .precio, .logo-gigante {
 .seccion { 
     padding: 40px 20px; 
     max-width: 1200px; 
-    /* ESTO ES LO NUEVO: Centra el bloque y lo empuja para abajo */
     margin: 60px auto 0 auto; 
 }
-
-/* ... dejá el resto de .grilla-categorias igual ... */
 
 /* La grilla que organiza las categorías */
 .grilla-categorias {
@@ -197,21 +200,49 @@ h1, h2, h3, .precio, .logo-gigante {
    6. TARJETAS DE PRODUCTO
    ========================================= */
 .tarjeta-mate {
-    flex-shrink: 0; /* IMPIDE QUE SE APLASTEN */
-    width: 260px; height: 450px;
-    background: white; border-radius: 15px;
+    flex-shrink: 0;
+    width: 300px; /* La ensanchamos un poquito (de 280 a 300) */
+    /* Dejamos que crezca según el contenido pero con un mínimo */
+    min-height: 520px; 
+    
+    background: white; 
+    border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    display: flex; flex-direction: column; overflow: hidden;
-    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 10px 5px;
 }
 .tarjeta-mate:hover { transform: translateY(-8px); }
 
 .foto-producto {
-    height: 65%; width: 100%;
-    display: flex; justify-content: center; align-items: center;
-    overflow: hidden; background: #fff;
+    /* Aumentamos la altura de 300px a 350px para que luzca más */
+    height: 350px; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dcedc9 !important; /* Mismo fondo de la web */
+    overflow: hidden;
+    
+    /* Reducimos el padding para que la imagen se estire más hacia los bordes */
+    padding: 5px; 
 }
-.foto-producto img { height: 100%; width: 100%; object-fit: cover; }
+.foto-producto img {
+    /* Con width y height al 100% y object-fit contain, 
+       la foto crecerá hasta el máximo posible sin cortarse */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    
+    /* Le damos un toque de nitidez */
+    image-rendering: auto;
+    
+    /* Sombra para resaltar el producto sobre el fondo verde */
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
+    
+    transition: transform 0.3s ease;
+}
 
 .info-producto {
     padding: 15px; text-align: center;
@@ -260,14 +291,29 @@ footer { text-align: center; padding: 40px; background-color: #111; color: #888;
 /* El Título Grande (NUESTRO CATÁLOGO / EQUIPATE COMPLETO) */
 .titulo-principal-seccion {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    color: #1b5e20;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    font-weight: 700;
+    font-size: 4rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 10px;
+    /* Sombra proyectada para que la letra "flote" */
+    text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
+    line-height: 1.1;
 }
-
+.eslogan-pro {
+    font-family: 'Playfair Display', serif; /* O una cursiva si tenés */
+    font-style: italic; /* Le da mucha onda */
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #dcedc9; /* El verde clarito de tu marca */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+    margin-bottom: 35px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.titulo-principal span {
+    color: #2e7d32; /* El verde de los mates */
+}
 /* Subtítulo chiquito */
 .subtitulo-seccion {
     font-family: 'Montserrat', sans-serif;
@@ -312,8 +358,11 @@ footer { text-align: center; padding: 40px; background-color: #111; color: #888;
 
 /* Ajuste para celular */
 @media (max-width: 768px) {
-    .titulo-principal-seccion {
-        font-size: 1.8rem;
+    .titulo-principal {
+        font-size: 2.2rem;
+    }
+    .eslogan-pro {
+        font-size: 1rem;
     }
 }
 /* --- CONTENEDOR BLANCO QUE OCUPA TODO EL ANCHO --- */
@@ -386,5 +435,60 @@ footer { text-align: center; padding: 40px; background-color: #111; color: #888;
         flex-direction: column !important;
         align-items: center;
         gap: 50px;
+    }
+}
+/* Estilo para que el bloque de IG mantenga la estética */
+.link-ig {
+    text-decoration: none; /* Saca el subrayado */
+    color: inherit; /* Mantiene el color que ya definimos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Efecto para que el ícono de IG resalte un poquito más */
+.link-ig i {
+    transition: transform 0.3s ease;
+}
+
+.link-ig:hover i {
+    transform: scale(1.1); /* Agranda un poquito el logo al pasar el mouse */
+    color: #E1306C; /* Opcional: El color clásico de Instagram al pasar el mouse */
+}
+
+/* Ajuste para que entren 4 elementos en la misma fila */
+.bloque-item {
+    flex: 1; 
+    min-width: 180px; /* Un poquito más chico para que entren los 4 cómodos */
+}
+/* --- OPTIMIZACIÓN PARA MÓVILES (Celulares) --- */
+@media (max-width: 768px) {
+    .portada {
+        min-height: 80vh; /* Un poco más corta para que se vea lo que sigue abajo */
+        padding: 0 20px;
+        /* Aumentamos un poquito el overlay en el cel para mejorar lectura */
+        background-color: rgba(0, 0, 0, 0.5) !important; 
+    }
+
+    .titulo-principal {
+        font-size: 2.5rem !important; /* Achicamos para que no corte palabras */
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+
+    .eslogan-pro {
+        font-size: 1.1rem !important; /* Tamaño justo para leer sin esfuerzo */
+        max-width: 100%; /* Que use todo el ancho del celu */
+        line-height: 1.5;
+        margin-bottom: 25px;
+        /* En el cel, a veces conviene sacar el Italic si la letra es muy fina */
+        font-style: normal; 
+        font-weight: 600; 
+    }
+
+    .btn-coleccion {
+        width: 80%; /* Botón más fácil de tocar con el pulgar */
+        padding: 15px;
+        font-size: 1.1rem;
     }
 }
