@@ -1,0 +1,15 @@
+import React from 'react';
+
+function Portada() {
+  return (
+    <header className="portada">
+        <img src="img/logo-matespirru-blanco.webp" alt="MatesPirru" className="logo-gigante" />
+        
+        <p className="subtitulo">Tradición, amigos y buenos momentos</p>
+        
+        <a href="#catalogo-mates" className="btn-coleccion">Ver Colección</a>
+    </header>
+  );
+}
+
+export default Portada;

@@ -1,7 +1,9 @@
 /* =========================================
    1. CONFIGURACIÓN GENERAL (RESET)
    ========================================= */
-html {
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+   html {
     scroll-behavior: smooth;
 }
 
@@ -320,7 +322,7 @@ h1, h2, h3, .precio, .logo-gigante, .titulo-categoria {
     font-family: 'Playfair Display', serif;
     
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
