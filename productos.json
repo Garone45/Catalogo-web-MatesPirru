@@ -1,0 +1,184 @@
+[
+  {
+    "id": 1,
+    "nombre": "Camionero Algarrobo",
+    "categoria": "camionero",
+    "precio": 15000,
+    "imagen": "img/camionero-algarrobo.webp"
+  },
+  {
+    "id": 5,
+    "nombre": "Camionero Bordó Clásico",
+    "categoria": "camionero",
+    "precio": 15000,
+    "imagen": "img/camionero-bordo.webp"
+  },
+  {
+    "id": 2,
+    "nombre": "Camionero Bordó Repujado",
+    "categoria": "camionero",
+    "precio": 16500,
+    "imagen": "img/camionero-bordo-repujado.webp"
+  },
+  {
+    "id": 4,
+    "nombre": "Camionero Repujado Natural",
+    "categoria": "camionero",
+    "precio": 16500,
+    "imagen": "img/camionero-repujado.webp"
+  },
+  {
+    "id": 3,
+    "nombre": "Imperial Algarrobo con Fleje de Rosas",
+    "categoria": "imperial",
+    "precio": 22000,
+    "imagen": "img/imperial-algarrobo-fleje-rosas.webp"
+  },
+  {
+    "id": 6,
+    "nombre": "Imperial Algarrobo con Flejes",
+    "categoria": "imperial",
+    "precio": 21000,
+    "imagen": "img/imperial-algarrobo-flejes.webp"
+  },
+  {
+    "id": 8,
+    "nombre": "Imperial Bordó Clásico",
+    "categoria": "imperial",
+    "precio": 20000,
+    "imagen": "img/imperial-bordo.webp"
+  },
+  {
+    "id": 9,
+    "nombre": "Imperial Bordó con Apliques",
+    "categoria": "imperial",
+    "precio": 23000,
+    "imagen": "img/imperial-bordo-apliques.webp"
+  },
+  {
+    "id": 11,
+    "nombre": "Imperial Negro con Apliques (Modelo 2)",
+    "categoria": "imperial",
+    "precio": 23000,
+    "imagen": "img/imperial-negro-apliques2.webp"
+  },
+  {
+    "id": 12,
+    "nombre": "Imperial Negro con Apliques",
+    "categoria": "imperial",
+    "precio": 23000,
+    "imagen": "img/imperial-negro-apliques.webp"
+  },
+  {
+    "id": 13,
+    "nombre": "Imperial Negro Repujado con Apliques",
+    "categoria": "imperial",
+    "precio": 24000,
+    "imagen": "img/imperial-negro-repujado-apliques.webp" 
+  },
+  {
+    "id": 14,
+    "nombre": "Imperial Suela con Apliques",
+    "categoria": "imperial",
+    "precio": 23000,
+    "imagen": "img/imperial-suela-apliques.webp"
+  },
+  {
+    "id": 15,
+    "nombre": "Torpedo Bordó Liso",
+    "categoria": "torpedo",
+    "precio": 18000,
+    "imagen": "img/torpedo-bordo-liso.webp"
+  },
+  {
+    "id": 16,
+    "nombre": "Torpedo Bordó Repujado con Apliques",
+    "categoria": "torpedo",
+    "precio": 19500,
+    "imagen": "img/torpedo-bordo-repujado-apliques.webp"
+  },
+  {
+    "id": 17,
+    "nombre": "Torpedo Negro Liso",
+    "categoria": "torpedo",
+    "precio": 18000,
+    "imagen": "img/torpedo-negro-liso.webp"
+  },
+  {
+    "id": 18,
+    "nombre": "Torpedo Negro Repujado",
+    "categoria": "torpedo",
+    "precio": 19000,
+    "imagen": "img/torpedo-negro-repujado.webp"
+  },
+  {
+    "id": 20,
+    "nombre": "Torpedo Suela Acero",
+    "categoria": "torpedo",
+    "precio": 18500,
+    "imagen": "img/torpedo-suela-acero.webp"
+  },
+  {
+    "id": 21,
+    "nombre": "Mate Criollo Base Cuero",
+    "categoria": "criollo",
+    "precio": 12000,
+    "imagen": "img/criollo-base-cuero.webp"
+  },
+  {
+    "id": 22,
+    "nombre": "Mate Criollo Bordó Repujado",
+    "categoria": "criollo",
+    "precio": 13500,
+    "imagen": "img/criollo-bordo-repujado.webp"
+  },
+  {
+    "id": 24,
+    "nombre": "Matera Cuadrada Borravino",
+    "categoria": "matera",
+    "precio": 35000,
+    "imagen": "img/matera-cuadrada-borravino.webp"
+  },
+  {
+    "id": 25,
+    "nombre": "Matera Cuadrada Negra",
+    "categoria": "matera",
+    "precio": 35000,
+    "imagen": "img/matera-cuadrada-negra.webp"
+  },
+  {
+    "id": 26,
+    "nombre": "Matera Doble Manija",
+    "categoria": "matera",
+    "precio": 38000,
+    "imagen": "img/matera-doblemanija.webp"
+  },
+  {
+    "id": 27,
+    "nombre": "Termo Aluminio",
+    "categoria": "termo",
+    "precio": 45000,
+    "imagen": "img/termo-alumio.webp"
+  },
+  {
+    "id": 28,
+    "nombre": "Termo Negro",
+    "categoria": "termo",
+    "precio": 45000,
+    "imagen": "img/termo-negro.webp"
+  },
+  {
+    "id": 29,
+    "nombre": "Termo Rosa",
+    "categoria": "termo",
+    "precio": 45000,
+    "imagen": "img/termo-rosa.webp"
+  },
+  {
+    "id": 30,
+    "nombre": "Yerba Baldo",
+    "categoria": "yerba",
+    "precio": 4500,
+    "imagen": "img/yerba-baldo.webp"
+  }
+]
