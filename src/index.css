@@ -462,33 +462,35 @@ footer { text-align: center; padding: 40px; background-color: #111; color: #888;
     min-width: 180px; /* Un poquito más chico para que entren los 4 cómodos */
 }
 /* --- OPTIMIZACIÓN PARA MÓVILES (Celulares) --- */
+/* --- OPTIMIZACIÓN PARA MÓVILES (Vertical) --- */
 @media (max-width: 768px) {
-    .portada {
-        min-height: 80vh; /* Un poco más corta para que se vea lo que sigue abajo */
+    .contenido-portada {
+        display: flex !important;
+        flex-direction: column !important; /* Uno arriba del otro */
+        align-items: center !important;    /* Todo centrado */
+        text-align: center;
         padding: 0 20px;
-        /* Aumentamos un poquito el overlay en el cel para mejorar lectura */
-        background-color: rgba(0, 0, 0, 0.5) !important; 
+    }
+
+    .logo-gigante {
+        max-width: 180px; /* Tamaño controlado para el logo */
+        margin-bottom: 20px;
     }
 
     .titulo-principal {
-        font-size: 2.5rem !important; /* Achicamos para que no corte palabras */
-        margin-bottom: 15px;
-        line-height: 1.2;
+        font-size: 2.2rem !important;
+        margin-bottom: 10px;
     }
 
     .eslogan-pro {
-        font-size: 1.1rem !important; /* Tamaño justo para leer sin esfuerzo */
-        max-width: 100%; /* Que use todo el ancho del celu */
-        line-height: 1.5;
-        margin-bottom: 25px;
-        /* En el cel, a veces conviene sacar el Italic si la letra es muy fina */
-        font-style: normal; 
-        font-weight: 600; 
+        font-size: 1rem !important;
+        margin-bottom: 30px;
+        max-width: 90%; /* Para que no toque los bordes */
     }
 
     .btn-coleccion {
-        width: 80%; /* Botón más fácil de tocar con el pulgar */
+        width: 85%; /* Botón grande y cómodo para el pulgar */
         padding: 15px;
-        font-size: 1.1rem;
+        display: block;
     }
 }

@@ -13,5 +13,3 @@ function Portada() {
     </header>
   );
 }
-
-export default Portada;
