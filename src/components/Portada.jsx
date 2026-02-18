@@ -2,8 +2,10 @@ import React from 'react';
 
 function Portada() {
   return (
-    <header className="portada">
-        <img src="img/logo-matespirru-blanco.webp" alt="MatesPirru" className="logo-gigante" />
+    // CAMBIO ACÁ: Agregamos el estilo en línea (style) con la ruta con PUNTO
+    <header className="portada" style={{ backgroundImage: "url('./img/fondo-portada.webp')" }}>
+        
+        <img src="./img/logo-matespirru-blanco.webp" alt="MatesPirru" className="logo-gigante" />
         
         <p className="subtitulo">Tradición, amigos y buenos momentos</p>
         
