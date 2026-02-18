@@ -462,16 +462,14 @@ footer { text-align: center; padding: 40px; background-color: #111; color: #888;
     min-width: 180px; /* Un poquito más chico para que entren los 4 cómodos */
 }
 /* --- OPTIMIZACIÓN PARA MÓVILES (Celulares) --- */
-/* --- OPTIMIZACIÓN PARA MÓVILES (Vertical) --- */
 @media (max-width: 768px) {
-    .contenido-portada {
+    .portada {
         display: flex !important;
         flex-direction: column !important; /* Uno arriba del otro */
         align-items: center !important;    /* Todo centrado */
         text-align: center;
         padding: 0 20px;
     }
-
     .logo-gigante {
         max-width: 180px; /* Tamaño controlado para el logo */
         margin-bottom: 20px;
@@ -482,7 +480,7 @@ footer { text-align: center; padding: 40px; background-color: #111; color: #888;
         margin-bottom: 10px;
     }
 
-    .eslogan-pro {
+  .eslogan-pro {
         font-size: 1rem !important;
         margin-bottom: 30px;
         max-width: 90%; /* Para que no toque los bordes */
@@ -492,5 +490,5 @@ footer { text-align: center; padding: 40px; background-color: #111; color: #888;
         width: 85%; /* Botón grande y cómodo para el pulgar */
         padding: 15px;
         display: block;
-    }
+    }   
 }
