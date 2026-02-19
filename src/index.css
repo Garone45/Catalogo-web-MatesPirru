@@ -21,14 +21,50 @@ h1, h2, h3, .precio, .logo-gigante {
    ========================================= */
 .navbar {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 60px;
+    top: 0; left: 0; width: 100%; height: 70px; /* Un poquito más alta para el buscador */
     background-color: #1b5e20;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 20px;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; /* Logo | Buscador | Menú */
+    padding: 0 40px;
 }
-
+.buscador-lindo-nav {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 50px;
+    padding: 5px 15px;
+    width: 100%;
+    max-width: 400px; /* Tamaño ideal para el centro */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.buscador-lindo-nav .input-buscador {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 8px;
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+}
+.buscador-lindo-nav .icono-lupa {
+    color: #2e7d32;
+    font-size: 1rem;
+}
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        padding: 10px;
+        flex-direction: column; /* Apilamos en el celu */
+        gap: 10px;
+    }
+    .buscador-lindo-nav {
+        max-width: 90%;
+    }
+    .menu {
+        display: none; /* Ocultamos links en móvil para que no se amontone */
+    }
+}
 .logo-icon img { height: 35px; width: auto; }
 
 .menu { display: flex; list-style: none; gap: 25px; }
