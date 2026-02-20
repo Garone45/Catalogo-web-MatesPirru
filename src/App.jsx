@@ -38,7 +38,8 @@ function App() {
     <div className="App">
       
       {/* 1. NAVBAR (Limpio, solo con logo y menú) */}
-      <Navbar />
+      {/* 1. NAVBAR (Le pasamos la magia de la búsqueda) */}
+      <Navbar alBuscar={manejarBusqueda} valorBusqueda={busqueda} />
 
       <main>
         {/* 2. PORTADA */}

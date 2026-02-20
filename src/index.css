@@ -17,70 +17,52 @@ h1, h2, h3, .precio, .logo-gigante {
 }
 
 /* =========================================
-   2. NAVBAR (MENÚ)
+   2. NAVBAR (MENÚ) Y BUSCADOR
    ========================================= */
 .navbar {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 70px; /* Un poquito más alta para el buscador */
-    background-color: #1b5e20;
-    z-index: 1000;
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; /* Logo | Buscador | Menú */
+    position: fixed; top: 0; left: 0; width: 100%; height: 75px;
+    background-color: #1b5e20; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
     padding: 0 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
+
+/* Izquierda */
+.nav-logo { flex: 1; display: flex; justify-content: flex-start; }
+.nav-logo img { height: 40px; width: auto; }
+
+/* Centro */
+.nav-centro { flex: 2; display: flex; justify-content: center; }
 .buscador-lindo-nav {
-    display: flex;
-    align-items: center;
-    flex: 2;
-    background: white;
-    border-radius: 50px;
-    padding: 5px 15px;
-    width: 100%;
-    max-width: 400px; /* Tamaño ideal para el centro */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    
+    display: flex; align-items: center;
+    background: white; border-radius: 50px;
+    padding: 8px 20px; width: 100%; max-width: 450px;
 }
-.buscador-lindo-nav .input-buscador {
-   display: flex;
-    align-items: center;
-    background: white;
-    border-radius: 50px;
-    padding: 5px 15px;
-    width: 100%;
-    max-width: 450px; /* Ajustamos para que se alinee visualmente con el logo de portada */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+.buscador-lindo-nav input {
+    border: none; outline: none; width: 100%; margin-left: 10px;
+    font-family: 'Montserrat', sans-serif; font-size: 1rem;
 }
-.buscador-lindo-nav .icono-lupa {
-    color: #2e7d32;
-    font-size: 1rem;
-}
+.buscador-lindo-nav .icono-lupa { color: #2e7d32; }
+
+/* Derecha */
+.nav-menu { flex: 1; display: flex; justify-content: flex-end; list-style: none; gap: 20px; }
+.nav-menu a { color: white; text-decoration: none; font-weight: 600; }
+
+/* =========================================
+   MÓVIL: Arreglo para que no "rompa" todo
+   ========================================= */
 @media (max-width: 768px) {
     .navbar {
-        height: auto;
-        padding: 10px;
-        flex-direction: column; /* Apilamos en el celu */
-        gap: 10px;
+        height: auto; flex-direction: column; padding: 15px; gap: 15px;
     }
-    .buscador-lindo-nav {
-        max-width: 90%;
-    }
-    .menu {
-        display: none; /* Ocultamos links en móvil para que no se amontone */
-    }
+    .nav-logo, .nav-centro { flex: none; width: 100%; justify-content: center; }
+    .buscador-lindo-nav { max-width: 95%; }
+    .nav-menu { display: none; } /* Ocultamos los links en celu */
+    
+    /* ACÁ ESTÁ LA MAGIA: Como la barra ahora es más alta, bajamos un poco la portada */
+    .portada { padding-top: 100px; } 
 }
-.logo-icon img { height: 35px; width: auto; }
 
-.menu { display: flex; list-style: none; gap: 10px; }
-.menu a {
-    color: white; text-decoration: none; font-size: 1.1rem;
-    font-weight: 500; position: relative; transition: color 0.3s;
-}
-.menu a:hover::after { width: 100%; }
-.menu a::after {
-    content: ''; position: absolute; width: 0; height: 2px;
-    bottom: 0; left: 0; background-color: white; transition: width 0.3s;
-}
 
 /* =========================================
    3. PORTADA
