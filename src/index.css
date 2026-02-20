@@ -67,17 +67,18 @@ h1, h2, h3, .precio, .logo-gigante {
 /* =========================================
    3. PORTADA
    ========================================= */
+/* =========================================
+   3. PORTADA
+   ========================================= */
 .portada {
     position: relative;
     min-height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Overlay para que resalte el contenido */
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./img/fondo-portada.webp');
-    background-size: cover;
-    background-position: center;
     text-align: center;
+    padding-top: 60px; /* Para que no lo tape la navbar */
+    /* ¡BORRAMOS EL BACKGROUND ACÁ! */
 }
 .contenido-portada {
     display: flex;
@@ -162,7 +163,7 @@ h1, h2, h3, .precio, .logo-gigante {
 /* CONTENEDOR DE LA IMAGEN: Acá manejamos la "distancia" */
 .contenedor-img-cat {
     width: 100%;
-    height: 350px; /* Antes estaba en 150px, ahora es mucho más grande */
+    height: 150px; /* Antes estaba en 150px, ahora es mucho más grande */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -185,7 +186,7 @@ h1, h2, h3, .precio, .logo-gigante {
     }
     
     .grilla-categorias {
-        gap: 10px; /* Un poco menos de espacio entre tarjetas para ganar tamaño */
+        gap: 30px; /* Un poco menos de espacio entre tarjetas para ganar tamaño */
     }
 }
 
@@ -372,15 +373,21 @@ footer { text-align: center; padding: 40px; background-color: #111; color: #888;
 }
 
 /* El Título Grande (NUESTRO CATÁLOGO / EQUIPATE COMPLETO) */
+.bloque-central, .bloque-separador {
+    text-align: center;
+    margin: 70px auto 50px auto; /* Un poquito más de aire arriba y abajo */
+    padding: 0 20px;
+    max-width: 800px;
+}
 .titulo-principal-seccion {
     font-family: 'Playfair Display', serif;
-    font-size: 4rem;
+    font-size: 3.5rem; /* Un tamaño imponente pero elegante */
     font-weight: 900;
-    color: #ffffff;
-    margin-bottom: 10px;
-    /* Sombra proyectada para que la letra "flote" */
-    text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
-    line-height: 1.1;
+    color: #1b5e20; /* Verde bien oscuro, excelente contraste con el fondo claro */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Separa un poquito las letras, le da un toque muy pro */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra súper sutil, casi invisible, solo para dar cuerpo */
 }
 .eslogan-pro {
     font-family: 'Playfair Display', serif; /* O una cursiva si tenés */
@@ -394,17 +401,33 @@ footer { text-align: center; padding: 40px; background-color: #111; color: #888;
     margin-left: auto;
     margin-right: auto;
 }
-.titulo-principal span {
-    color: #2e7d32; /* El verde de los mates */
+.titulo-principal-seccion::after {
+    content: '';
+    display: block;
+    width: 80px; /* Ancho de la línea */
+    height: 5px; /* Grosor de la línea */
+    background-color: #2e7d32; /* Un verde un tono más vivo */
+    margin: 20px auto 0 auto; /* La centra y la separa del texto */
+    border-radius: 5px;
 }
 /* Subtítulo chiquito */
 .subtitulo-seccion {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem;
-    color: #555;
+    font-size: 1.2rem;
+    color: #333333; /* Un gris casi negro para que se lea perfecto */
     font-style: italic;
+    font-weight: 600; /* Le damos un poco más de "cuerpito" */
+    margin-top: 15px;
 }
-
+@media (max-width: 768px) {
+    .titulo-principal-seccion {
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+    }
+    .titulo-principal-seccion::after {
+        width: 60px; /* Línea un poquito más corta en el celu */
+    }
+}
 /* --- EL BUSCADOR TIPO CÁPSULA --- */
 .buscador-lindo {
     display: flex;

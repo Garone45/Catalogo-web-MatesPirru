@@ -1,16 +1,22 @@
 import React from 'react';
 
+// 1. REVISÁ ESTA RUTA: Asegurate de que "fondo-portada.webp" 
+// exista adentro de la carpeta "img" que está en "src".
+import fondoMates from '/img/fondo-portada.webp'; 
+
 function Portada() {
   return (
-    <section className="portada" id="inicio">
+    <section 
+      className="portada" 
+      style={{
+        background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${fondoMates})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}
+    >
       <div className="contenido-portada">
-        {/* 1. Logo al medio */}
         <img src="./img/logo-matespirru-blanco.webp" alt="Mates Pirru" className="logo-portada" />
-        
-        {/* 2. Slogan abajo del logo */}
-        <p className="eslogan-pro">Tradición, amigos y buenos momentos.</p>
-        
-        {/* 3. Botón abajo del slogan */}
+        <p className="eslogan-pro">Si te acompaña MatesPirru, eleigste bien! </p>
         <a href="#mates-seccion" className="btn-coleccion">
           Ver Colección
         </a>
@@ -19,4 +25,5 @@ function Portada() {
   );
 }
 
-export default Portada; // El export que te faltaba para el deploy
+// 2. ¡ESTA LÍNEA ES LA QUE TE FALTABA Y ROMPÍA TODO!
+export default Portada;
