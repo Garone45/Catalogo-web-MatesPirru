@@ -42,7 +42,7 @@ function Carrusel({ titulo, productos, categoria, alHacerClick }) {
         
         {/* Flecha Izquierda */}
         {mostrarFlechas && (
-            <button onClick={scrollIzquierda} className="btn-flecha izq">
+            <button aria-label="Deslizar a la izquierda" onClick={scrollIzquierda} className="btn-flecha izq">
                 <i className="fa-solid fa-angle-left"></i>
             </button>
         )}
@@ -60,7 +60,7 @@ function Carrusel({ titulo, productos, categoria, alHacerClick }) {
 
         {/* Flecha Derecha */}
         {mostrarFlechas && (
-            <button onClick={scrollDerecha} className="btn-flecha der">
+            <button aria-label="Deslizar a la derecha" onClick={scrollDerecha} className="btn-flecha der">
                 <i className="fa-solid fa-angle-right"></i>
             </button>
         )}

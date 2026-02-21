@@ -12,7 +12,14 @@ function TarjetaMate({ nombre, precio, imagen, alHacerClick }) {
         onClick={() => alHacerClick(imagen)}
         style={{ position: 'relative', cursor: 'pointer', overflow: 'hidden' }}
       >
-        <img src={imagen} alt={nombre} loading="lazy" style={{ width: '100%', display: 'block' }} />
+        <img 
+    src={imagen} 
+    alt={nombre} 
+    loading="lazy" 
+    width="800" 
+    height="800" 
+    style={{ width: '100%', height: 'auto', display: 'block' }} 
+/>
 
         {/* 2. EL ÍCONO DE ZOOM (Lupita flotante) */}
         <div style={{
