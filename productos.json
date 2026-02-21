@@ -180,5 +180,12 @@
     "categoria": "yerba",
     "precio": 4500,
     "imagen": "img/yerba-baldo.webp"
+  },
+  {
+    "id": 99,
+    "nombre": "Bombilla Pico de Loro (Próximamente)",
+    "precio": "Consultar",
+    "categoria": "bombilla",
+    "imagen": "https://via.placeholder.com/300x400/dcedc9/1b5e20?text=Proximamente"
   }
 ]
