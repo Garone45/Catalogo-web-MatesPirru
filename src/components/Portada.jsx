@@ -15,7 +15,12 @@ function Portada() {
       }}
     >
       <div className="contenido-portada">
-        <img src="./img/logo-matespirru-blanco.webp" alt="Mates Pirru" className="logo-portada" />
+        <img 
+            src="./img/logo-matespirru-blanco.webp" 
+            alt="Mates Pirru" 
+            className="logo-portada" 
+            fetchpriority="high" 
+        />
         {/* En tu Portada.jsx, cambiá el <p> por esto: */}
 <p className="eslogan-pro">Si te acompaña MatesPirru, elegiste bien!</p>
         <a href="#mates-seccion" className="btn-coleccion">
@@ -26,5 +31,4 @@ function Portada() {
   );
 }
 
-// 2. ¡ESTA LÍNEA ES LA QUE TE FALTABA Y ROMPÍA TODO!
 export default Portada;

@@ -248,6 +248,10 @@ h1, h2, h3, .precio, .logo-gigante {
 .izq { left: -20px; } /* Un poquito afuera a la izquierda */
 .der { right: -20px; } /* Un poquito afuera a la derecha */
 
+.pocos-productos .btn-flecha {
+    display: none !important;
+}
+
 /* =========================================
 6. TARJETAS DE PRODUCTO
 ========================================= */
@@ -636,5 +640,8 @@ BARRA DE BENEFICIOS (FONDO VERDE DE LA WEB)
         flex-direction: column !important;
         align-items: center;
         gap: 40px;
+    }
+    .pocos-productos .btn-flecha {
+        display: flex !important;
     }
 }

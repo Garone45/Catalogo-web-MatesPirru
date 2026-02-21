@@ -50,32 +50,46 @@ function App() {
             <h2 className="titulo-principal-seccion">NUESTRO CATÁLOGO</h2>                              
         </div>
 
-        {/* 4. RESULTADOS O CONTENIDO */}
+       {/* 4. RESULTADOS O CONTENIDO */}
         {busqueda !== "" ? (
-          <section className="resultados-busqueda">
-            <p className="subtitulo-seccion" style={{textAlign: 'center'}}>Resultados para: "{busqueda}"</p>
-            <div className="grilla-productos">
-              {productosFiltrados.length > 0 ? (
-                productosFiltrados.map(prod => (
-                  <div key={prod.id} className="tarjeta-mate">
-                      <div className="foto-producto" onClick={() => abrirZoom(prod.imagen)}>
-                          <img src={prod.imagen} alt={prod.nombre} />
-                      </div>
-                      <div className="info-producto">
-                          <h3>{prod.nombre}</h3>
-                          <p className="precio">${prod.precio}</p>
-                      </div>
-                  </div>
-                ))
-              ) : (
-                <p style={{textAlign: 'center', gridColumn: '1/-1', padding: '40px'}}>
-                  No hay coincidencias. ¡Probá con otra palabra! 🧉
-                </p>
-              )}
+          <section className="resultados-busqueda seccion-carrusel">
+            
+            {/* Título con el mismo estilo del carrusel */}
+            <div className="cabecera-titulo" style={{ marginTop: '40px' }}>
+                <h2 className="titulo-linea">Resultados para: "{busqueda}"</h2>
             </div>
+
+            {/* ACÁ ESTÁ LA MAGIA: Usamos las clases de tu carrusel */}
+            <div className="cuerpo-carrusel">
+                <div className="riel-tarjetas">
+                  {productosFiltrados.length > 0 ? (
+                    productosFiltrados.map(prod => (
+                      <div key={prod.id} className="tarjeta-mate">
+                          <div className="foto-producto" onClick={() => abrirZoom(prod.imagen)}>
+                              <img src={prod.imagen} alt={prod.nombre} loading="lazy" />
+                          </div>
+                          <div className="info-producto">
+                              <h3>{prod.nombre}</h3>
+                              <p className="precio">${prod.precio}</p>
+                              {/* Tu botón de Instagram que ya tenías */}
+                              <a href="https://www.instagram.com/matespirru/" target="_blank" rel="noreferrer" className="btn-comprar">
+                                Ver en Instagram
+                              </a>
+                          </div>
+                      </div>
+                    ))
+                  ) : (
+                    <p style={{textAlign: 'center', width: '100%', padding: '40px', fontWeight: 'bold', color: '#1b5e20'}}>
+                      No hay coincidencias. ¡Probá con otra palabra! 🧉
+                    </p>
+                  )}
+                </div>
+            </div>
+
           </section>
         ) : (
           <>
+
             <Categorias />
 
             <div id="mates-seccion">
@@ -89,6 +103,7 @@ function App() {
                 <div className="bloque-separador">
                     <h2 className="titulo-principal-seccion">EQUIPATE COMPLETO</h2>
                 </div>
+                <Carrusel titulo="Bombillas" categoria="bombilla" productos={productos} alHacerClick={abrirZoom} />
                 <Carrusel titulo="Termos" categoria="termo" productos={productos} alHacerClick={abrirZoom} />
                 <Carrusel titulo="Materas" categoria="matera" productos={productos} alHacerClick={abrirZoom} />
                 <Carrusel titulo="Yerbas" categoria="yerba" productos={productos} alHacerClick={abrirZoom} />

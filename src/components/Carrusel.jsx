@@ -8,7 +8,9 @@ function Carrusel({ titulo, productos, categoria, alHacerClick }) {
   const productosDeEstaCategoria = productos.filter(p => p.categoria === categoria);
 
   // 2. Lógica: Mostrar flechas solo si hay más de 3 productos
-  const mostrarFlechas = productosDeEstaCategoria.length > 3;
+  const mostrarFlechas = productosDeEstaCategoria.length > 1;
+
+  const clasePocos = productosDeEstaCategoria.length <= 3 ? "pocos-productos" : "";
 
   const scrollIzquierda = () => {
     if(filaRef.current) {
@@ -26,7 +28,9 @@ function Carrusel({ titulo, productos, categoria, alHacerClick }) {
   if (productosDeEstaCategoria.length === 0) return null;
 
   return (
-    <div className="seccion-carrusel">
+
+    
+    <div className={`seccion-carrusel ${clasePocos}`}>
       
       {/* 1. TÍTULO CENTRADO CON BARRITA (Fuera de los controles) */}
       <div className="cabecera-titulo">
