@@ -48,28 +48,12 @@ h1, h2, h3, .precio, .logo-gigante {
 .nav-menu { flex: 1; display: flex; justify-content: flex-end; list-style: none; gap: 20px; }
 .nav-menu a { color: white; text-decoration: none; font-weight: 600; }
 
-/* =========================================
-   MÓVIL: Arreglo para que no "rompa" todo
-   ========================================= */
-@media (max-width: 768px) {
-    .navbar {
-        height: auto; flex-direction: column; padding: 15px; gap: 15px;
-    }
-    .nav-logo, .nav-centro { flex: none; width: 100%; justify-content: center; }
-    .buscador-lindo-nav { max-width: 95%; }
-    .nav-menu { display: none; } /* Ocultamos los links en celu */
-    
-    /* ACÁ ESTÁ LA MAGIA: Como la barra ahora es más alta, bajamos un poco la portada */
-    .portada { padding-top: 100px; } 
-}
 
 
 /* =========================================
-   3. PORTADA
-   ========================================= */
-/* =========================================
-   3. PORTADA
-   ========================================= */
+3. PORTADA
+========================================= */
+
 .portada {
     position: relative;
     min-height: 90vh;
@@ -122,8 +106,8 @@ h1, h2, h3, .precio, .logo-gigante {
 }
 
 /* =========================================
-   4. CATEGORÍAS (CON AIRE ARRIBA)
-   ========================================= */
+4. CATEGORÍAS (CON AIRE ARRIBA)
+========================================= */
 .seccion { 
     padding: 40px 20px; 
     max-width: 1200px; 
@@ -179,20 +163,10 @@ h1, h2, h3, .precio, .logo-gigante {
     transition: transform 0.3s ease;
 }
 
-/* En el celular también le damos más tamaño */
-@media (max-width: 768px) {
-    .contenedor-img-cat {
-        height: 180px; /* Un tamaño generoso para que se vea bien en la mano */
-    }
-    
-    .grilla-categorias {
-        gap: 30px; /* Un poco menos de espacio entre tarjetas para ganar tamaño */
-    }
-}
 
 /* =========================================
-   5. CARRUSEL DE PRODUCTOS (DISEÑO FINAL)
-   ========================================= */
+5. CARRUSEL DE PRODUCTOS (DISEÑO FINAL)
+========================================= */
 
 .seccion-carrusel {
     /* ESTO ARREGLA TODO: */
@@ -274,15 +248,9 @@ h1, h2, h3, .precio, .logo-gigante {
 .izq { left: -20px; } /* Un poquito afuera a la izquierda */
 .der { right: -20px; } /* Un poquito afuera a la derecha */
 
-/* En celular ocultamos flechas */
-@media (max-width: 768px) {
-    .btn-flecha { display: none; }
-    .izq, .der { display: none; }
-}
-
 /* =========================================
-   6. TARJETAS DE PRODUCTO
-   ========================================= */
+6. TARJETAS DE PRODUCTO
+========================================= */
 .tarjeta-mate {
     flex-shrink: 0;
     width: 300px; /* La ensanchamos un poquito (de 280 a 300) */
@@ -314,7 +282,7 @@ h1, h2, h3, .precio, .logo-gigante {
 }
 .foto-producto img {
     /* Con width y height al 100% y object-fit contain, 
-       la foto crecerá hasta el máximo posible sin cortarse */
+    la foto crecerá hasta el máximo posible sin cortarse */
     width: 100%;
     height: 100%;
     object-fit: contain; 
@@ -343,26 +311,13 @@ h1, h2, h3, .precio, .logo-gigante {
 .btn-comprar:hover { background-color: #2e7d32; }
 
 /* =========================================
-   7. EXTRAS Y FOOTER
-   ========================================= */
+7. EXTRAS Y FOOTER
+========================================= */
 footer { text-align: center; padding: 40px; background-color: #111; color: #888; margin-top: 50px;}
 
-/* AJUSTES PARA CELULAR */
-@media (max-width: 768px) {
-    .navbar { padding: 0 15px; }
-    .menu { gap: 15px; } .menu a { font-size: 0.9rem; }
-    .portada { height: 60vh; min-height: auto; }
-    .logo-gigante { width: 180px; }
-    
-    /* En celular escondemos las flechas (se usa el dedo) */
-    .indicadores { display: none; }
-    
-    .titulo-controles h3 { font-size: 1.5rem; text-align: left; }
-    .tarjeta-mate { width: 240px; height: 420px; }
-}
 /* =========================================
-   ESTILOS RECUPERADOS (TÍTULOS Y BUSCADOR)
-   ========================================= */
+ESTILOS RECUPERADOS (TÍTULOS Y BUSCADOR)
+========================================= */
 
 /* Contenedor para centrar títulos */
 .bloque-central, .bloque-separador {
@@ -419,15 +374,7 @@ footer { text-align: center; padding: 40px; background-color: #111; color: #888;
     font-weight: 600; /* Le damos un poco más de "cuerpito" */
     margin-top: 15px;
 }
-@media (max-width: 768px) {
-    .titulo-principal-seccion {
-        font-size: 2.2rem;
-        letter-spacing: 1px;
-    }
-    .titulo-principal-seccion::after {
-        width: 60px; /* Línea un poquito más corta en el celu */
-    }
-}
+
 /* --- EL BUSCADOR TIPO CÁPSULA --- */
 .buscador-lindo {
     display: flex;
@@ -462,19 +409,10 @@ footer { text-align: center; padding: 40px; background-color: #111; color: #888;
     color: #333;
 }
 
-/* Ajuste para celular */
-@media (max-width: 768px) {
-    .titulo-principal {
-        font-size: 2.2rem;
-    }
-    .eslogan-pro {
-        font-size: 1rem;
-    }
-}
 /* --- CONTENEDOR BLANCO QUE OCUPA TODO EL ANCHO --- */
 /* =========================================
-   BARRA DE BENEFICIOS (FONDO VERDE DE LA WEB)
-   ========================================= */
+BARRA DE BENEFICIOS (FONDO VERDE DE LA WEB)
+========================================= */
 
 .contenedor-beneficios-full {
     /* Usamos el color de fondo de tu web */
@@ -535,14 +473,6 @@ footer { text-align: center; padding: 40px; background-color: #111; color: #888;
     line-height: 1.4;
 }
 
-/* --- EN CELULAR SÍ LOS PONEMOS UNO ABAJO DEL OTRO --- */
-@media (max-width: 768px) {
-    .fila-beneficios {
-        flex-direction: column !important;
-        align-items: center;
-        gap: 50px;
-    }
-}
 /* Estilo para que el bloque de IG mantenga la estética */
 .link-ig {
     text-decoration: none; /* Saca el subrayado */
@@ -567,39 +497,144 @@ footer { text-align: center; padding: 40px; background-color: #111; color: #888;
     flex: 1; 
     min-width: 180px; /* Un poquito más chico para que entren los 4 cómodos */
 }
-/* --- OPTIMIZACIÓN PARA MÓVILES (Celulares) --- */
+/* =========================================
+   MÓVIL: Arreglo para que no "rompa" todo
+   ========================================= */
+/* =========================================
+   MÓVIL: Diseño unificado y limpio
+   ========================================= */
 @media (max-width: 768px) {
-    .logo-portada {
-        max-width: 200px; /* Logo más acorde al celu */
-    }
     
-    .eslogan-pro {
-        font-size: 1.3rem;
-    }
-    
-    .btn-coleccion {
-        width: 100%; /* Botón ancho para fácil acceso */
-        max-width: 250px;
-    }
+    /* 1. NAVBAR Y BUSCADOR (Compactos) */
     .navbar {
-        height: auto; /* Se estira para las dos filas */
+        height: auto; 
         flex-direction: column; 
-        padding: 10px 20px;
-        gap: 8px;
+        padding: 12px 15px; /* Un poquito más de aire arriba y abajo */
+    }
+    .nav-logo { 
+        display: none; /* ¡ACÁ ESTÁ LA MAGIA! Chau logo doble en el celu */
+    }
+    .nav-logo img { 
+        height: 28px; /* Logo sutil arriba para no competir con la portada */
     }
     
-    .logo-icon, .menu, .buscador-lindo-nav {
-        flex: none; /* Quitamos el peso para que se apilen */
+    .buscador-lindo-nav { 
+        max-width: 100%; 
+        padding: 8px 15px; /* Un buscador un poquito más gordito y cómodo para el dedo */
+    }
+    .nav-menu { 
+        display: none; /* Escondemos links en celu */
+    }
+    .nav-centro { 
+        flex: none; 
+        width: 100%; 
+        justify-content: center; 
+    }
+
+    /* 2. PORTADA (Ajuste de jerarquías) */
+    .portada { 
+        padding-top: 90px; /* Evita que el navbar pise la foto */
+        min-height: 75vh; 
+    }
+   .logo-portada { 
+        max-width: 200px; 
+        margin-bottom: 5px;
+        margin-top: -120px; /* <--- ACÁ ESTÁ EL TRUCO: Mientras más negativo, más sube */
+    }
+    .eslogan-pro {
+        font-size: 1.1rem; 
+        font-style: normal; /* Sin cursiva, se ve más moderno */
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        padding: 0 10px;
+        margin-bottom: 25px;
+    }
+    .btn-coleccion { 
+        width: 100%; 
+        max-width: 250px; 
+        padding: 12px 30px;
+        font-size: 0.9rem;
+    }
+
+    /* 3. TÍTULOS GRANDES */
+    .bloque-central, .bloque-separador {
+        margin: 40px auto 20px auto; 
+    }
+    .titulo-principal-seccion {
+        font-size: 2rem; 
+        letter-spacing: 1px;
+    }
+    .titulo-principal-seccion::after {
+        width: 50px; 
+        height: 4px;
+        margin-top: 15px;
+    }
+
+    /* 4. CATEGORÍAS */
+    .grilla-categorias {
+        gap: 15px; 
+        grid-template-columns: repeat(2, 1fr); /* 2x2 en celular */
+    }
+    .tarjeta-categoria {
+        padding: 0; /* Le sacamos el colchón blanco que tenía alrededor */
+        overflow: hidden; /* Para que la foto no se escape de las puntas redondas */
+    }
+    .contenedor-img-cat { 
+        height: 140px; /* Un tamaño ideal para que entren las 2 filas en la pantalla */
+        margin-bottom: 0;
+    }
+    .contenedor-img-cat img {
         width: 100%;
-        justify-content: center;
+        height: 100%;
+        padding: 0; /* Le sacamos el aire interno */
+        object-fit: cover; /* MAGIA: Llena el cuadrado perfecto recortando lo que sobra */
     }
-    
-    /* Ocultamos el menú en móvil para que no sea un caos visual */
-    .menu {
-        display: none; 
+    .tarjeta-categoria h3, 
+    .tarjeta-categoria span, 
+    .tarjeta-categoria p {
+        color: #1b5e20 !important; /* Tu verde oscuro institucional */
+        font-size: 1.1rem;
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        padding: 12px 5px;
+        margin: 0;
+        text-align: center;
+        background-color: white; /* Fondo blanco solo para la franja del texto */
     }
+
+    /* 5. CARRUSEL Y TARJETAS */
+    .seccion-carrusel {
+        padding: 0 10px; /* Le damos un poquito de margen al contenedor */
+    }
+    .btn-flecha { 
+        display: flex; /* Antes estaba en none */
+        width: 35px; /* Más chiquitas para el dedo */
+        height: 35px; 
+        font-size: 1.2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3); /* Sombrita para que resalten */
+        z-index: 20;
+    }
+    .izq { left: 0px; } /* Las pegamos a los bordes de la pantalla */
+    .der { right: 0px; }
     
-    .buscador-lindo-nav .input-wrapper {
-        max-width: 100%; /* Que use todo el ancho del celu */
+    .indicadores { 
+        display: none; /* Estos sí los dejamos ocultos */
+    }
+    .tarjeta-mate { 
+        /* ACÁ ESTÁ EL TRUCO: Al hacerla de 220px, forzamos a que la tarjeta 
+           que sigue "asome" un pedacito en el borde derecho de la pantalla */
+        width: 220px; 
+        min-height: 400px; 
+    }
+    .titulo-controles h3 { 
+        font-size: 1.5rem; 
+        text-align: left; 
+    }
+
+    /* 6. BENEFICIOS */
+    .fila-beneficios {
+        flex-direction: column !important;
+        align-items: center;
+        gap: 40px;
     }
 }

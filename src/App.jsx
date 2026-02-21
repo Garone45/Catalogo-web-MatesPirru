@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 // IMPORTAMOS LOS COMPONENTES
-import Navbar from './components/Navbar'; // Acordate de quitar el input de adentro del Navbar
+import Navbar from './components/Navbar';
 import Portada from './components/Portada';
 import Beneficios from './components/Beneficios';
 import Categorias from './components/Categorias';
@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="App">
       
-      {/* 1. NAVBAR (Limpio, solo con logo y menú) */}
+    
       {/* 1. NAVBAR (Le pasamos la magia de la búsqueda) */}
       <Navbar alBuscar={manejarBusqueda} valorBusqueda={busqueda} />
 
@@ -79,7 +79,7 @@ function App() {
             <Categorias />
 
             <div id="mates-seccion">
-                <Carrusel titulo="Mates Imperiales" categoria="imperiales" productos={productos} alHacerClick={abrirZoom} />
+                <Carrusel titulo="Mates Imperiales" categoria="imperial" productos={productos} alHacerClick={abrirZoom} />
                 <Carrusel titulo="Mates Torpedos" categoria="torpedo" productos={productos} alHacerClick={abrirZoom} />
                 <Carrusel titulo="Mates Camioneros" categoria="camionero" productos={productos} alHacerClick={abrirZoom} />
                 <Carrusel titulo="Mates Criollos" categoria="criollo" productos={productos} alHacerClick={abrirZoom} />

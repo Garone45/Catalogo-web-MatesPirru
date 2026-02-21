@@ -16,7 +16,8 @@ function Portada() {
     >
       <div className="contenido-portada">
         <img src="./img/logo-matespirru-blanco.webp" alt="Mates Pirru" className="logo-portada" />
-        <p className="eslogan-pro">Si te acompaña MatesPirru, eleigste bien! </p>
+        {/* En tu Portada.jsx, cambiá el <p> por esto: */}
+<p className="eslogan-pro">Si te acompaña MatesPirru, elegiste bien!</p>
         <a href="#mates-seccion" className="btn-coleccion">
           Ver Colección
         </a>
