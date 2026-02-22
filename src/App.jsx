@@ -8,6 +8,8 @@ import Categorias from './components/Categorias';
 import Carrusel from './components/Carrusel';
 import ModalZoom from './components/Modal';
 import Footer from './components/Footer';
+import EditarVirola from './components/EditarVirola';
+import disenosGrabados from './components/disenosGrabados';
 import './App.css';
 
 function App() {
@@ -98,6 +100,7 @@ function App() {
                 <Carrusel titulo="Mates Camioneros" categoria="camionero" productos={productos} alHacerClick={abrirZoom} />
                 <Carrusel titulo="Mates Criollos" categoria="criollo" productos={productos} alHacerClick={abrirZoom} />
             </div>
+            <EditarVirola />
 
             <div id="accesorios-seccion">
                 <div className="bloque-separador">
@@ -115,6 +118,9 @@ function App() {
       </main>
 
       {zoomImagen && <ModalZoom imagen={zoomImagen} cerrar={cerrarZoom} />}
+
+
+
       <Footer />
     </div>
   );

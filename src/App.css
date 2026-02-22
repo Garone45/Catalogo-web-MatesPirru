@@ -1,94 +1,320 @@
-/* ELIMINÁMOS LAS RESTRICCIONES DE ANCHO */
+/* ==========================================
+   1. REGLAS GLOBALES Y RESET
+   ========================================== */
 #root {
   width: 100%;
   max-width: 100%;
   margin: 0;
   padding: 0;
-  text-align: center; /* Esto podés dejarlo si querés centrar textos por defecto */
+  text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-/* --- ESTILOS DEL MODAL (ZOOM) --- */
+/* --- ESTILOS DEL MODAL (ZOOM DE FOTOS) --- */
 .modal-overlay {
-    position: fixed; /* Se queda fijo aunque scrollees */
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85); /* Fondo negro semitransparente */
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    z-index: 2000; /* Para que aparezca ARRIBA de todo */
-    backdrop-filter: blur(5px); /* Efecto borroso pro */
-    animation: aparecer 0.3s ease;
-}
-
-.modal-contenido {
-    position: relative;
-    max-width: 90%;
-    max-height: 90%;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(5px);
+  animation: aparecer 0.3s ease;
 }
 
 .modal-contenido img {
-    max-width: 100%;
-    max-height: 80vh; /* Que no ocupe más del 80% de la altura */
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    border: 2px solid white;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  border: 2px solid white;
 }
 
 .btn-cerrar-modal {
-    position: absolute;
-    top: -40px;
-    right: 0;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
+  position: absolute;
+  top: -40px; right: 0;
+  background: none; border: none;
+  color: white; font-size: 2rem;
+  cursor: pointer;
 }
 
 @keyframes aparecer {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-/* Hacemos que la foto en la tarjeta parezca clickeable */
-.foto-producto img {
-    cursor: zoom-in; 
-} 
+/* ==========================================
+   2. EDITOR DE VIROLA: LAYOUT Y CABECERA
+   ========================================== */
+.editor-seccion {
+  padding: 80px 20px;
+  background-color: #f9fbf9; /* Un fondo apenas verdoso muy suave */
+}
+
+.editor-layout {
+  display: flex;
+  align-items: flex-start;
+  max-width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.editor-header {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.editor-header h2 {
+  font-size: 2.8rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.editor-header p {
+  font-size: 1.4rem;
+  color: #555;
+}
+
+/* ==========================================
+   3. BARRA LATERAL (ESTILO CANVA)
+   ========================================== */
+.menu-lateral {
+  width: 280px;
+  min-height: 75vh;
+  background-color: #2c3e50;
+  color: white;
+  position: sticky;
+  top: 20px;
+  left: 0;
+  border-radius: 0 20px 20px 0;
+  box-shadow: 5px 0 20px rgba(0,0,0,0.15);
+  z-index: 10;
+  /* Animación de entrada */
+  transform: translateX(-100%);
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.menu-lateral.visible {
+  transform: translateX(0);
+}
+
+.menu-contenido {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.menu-lateral h3 {
+  color: #25D366;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 15px;
+}
+
+/* --- BUSCADOR E ICONOS --- */
+.buscador-canva input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #1a252f;
+  color: white;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.buscador-canva input:focus { border-color: #25D366; }
+
+.grilla-libreria {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.item-libreria {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border: none;
+  padding: 12px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.item-libreria:hover { transform: scale(1.03); background-color: #f0f0f0; }
+
+.nombre-item { color: #2c3e50; font-weight: 600; }
+.icono-add { color: #25D366; font-weight: bold; font-size: 1.2rem; }
+
+.acciones-finales {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ==========================================
+   4. LIENZO Y CÍRCULOS (MATE)
+   ========================================== */
+.lienzo-contenedor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lienzo-virola {
+  width: 100%;
+  max-width: 550px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 3px solid #333;
+  background-color: transparent;
+  position: relative;
+}
+
+.lienzo-virola::after {
+  content: "";
+  position: absolute;
+  top: 75px; left: 75px; right: 75px; bottom: 75px;
+  border-radius: 50%;
+  border: 3px solid #333;
+  pointer-events: none;
+}
+
+/* Los grabados que se arrastran */
+.sticker-grabado {
+  position: absolute;
+  cursor: move;
+}
+
+.sticker-grabado img, .icono-vectorial {
+  max-width: 60px;
+  max-height: 60px;
+}
+
+/* ==========================================
+   5. BOTONES DE ACCIÓN (ESTILO PIRRU)
+   ========================================== */
+.btn-limpiar {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-whatsapp-envio {
+  background-color: #25D366;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.seccion-categoria h4 {
+  color: #25D366; /* Verde Pirru para los títulos */
+  font-size: 0.9rem;
+  text-align: left;
+  margin: 15px 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.iconos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 iconos por fila */
+  gap: 10px;
+}
+
+.btn-item-icon {
+  aspect-ratio: 1 / 1;
+  background-color: #34495e; /* Fondo un poco más claro que el menú */
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: white;
+  font-size: 1.5rem; /* Tamaño del icono */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-item-icon:hover {
+  background-color: #25D366;
+  color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+   6. RESPONSIVE (MOBILE)
+   ========================================== */
+@media (max-width: 768px) {
+  .editor-seccion { padding: 40px 15px; }
+  .editor-header h2 { font-size: 2rem; }
+  .editor-header p { font-size: 1.1rem; }
+
+  .editor-layout {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .menu-lateral {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    top: 0;
+    border-radius: 20px;
+    transform: none; /* En celu que aparezca siempre */
+  }
+
+  .lienzo-virola { max-width: 320px; }
+  .lienzo-virola::after { top: 45px; left: 45px; right: 45px; bottom: 45px; }
+  .btn-item-icon {
+    font-size: 1.2rem;
+    padding: 8px;
+  }
+
+  /* 2. Achicamos los títulos de categorías y el buscador */
+  .seccion-categoria h4 {
+    font-size: 0.75rem;
+    margin: 10px 0 5px 0;
+  }
+
+  .buscador-canva input {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  /* 3. Reducimos el padding del contenedor del menú */
+  .menu-contenido {
+    padding: 15px;
+  }
+
+  /* 4. Ponemos 4 íconos por fila en lugar de 3 para ganar espacio vertical */
+  .iconos-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  /* 5. Altura máxima más corta para que no tape todo el mate al scrollear */
+  .grilla-libreria {
+    max-height: 250px;
+  }
+}
