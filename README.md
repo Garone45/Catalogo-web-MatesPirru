@@ -5,7 +5,6 @@
 ![Vista Previa del Sitio](./img/preview.png)
 
 Web oficial de catálogo de productos para **MatesPirru**. 
-Este proyecto es una solución digital para exhibir productos artesanales (Mates, Termos y Accesorios) permitiendo a los clientes visualizar el producto y concretar compras directamente vía WhatsApp.
 
 ## 🚀 Características Principales
 
@@ -24,31 +23,17 @@ Este proyecto es una solución digital para exhibir productos artesanales (Mates
 
 ## ⚙️ Arquitectura y Funcionamiento Técnico
 
-Este proyecto implementa una arquitectura que simula el consumo de una API REST real:
-
 1.  **Fuente de Datos (JSON):**
-    Los productos se almacenan en un archivo `productos.json` como texto plano, permitiendo una fácil actualización del stock sin tocar el código fuente.
+    Los productos se almacenan en un archivo `productos.json` como texto plano.
 
 2.  **Consumo de Datos (Fetch API):**
-    Utilizando `fetch()`, la aplicación realiza una petición asíncrona para obtener los datos. Se utilizan **Promesas** (`.then`) para manejar la respuesta y parsear el JSON a objetos JavaScript manipulables.
+    Utilizando `fetch()`, la aplicación realiza una petición asíncrona para obtener los datos.
 
 3.  **Lógica Reutilizable (DRY):**
-    Se implementó una función reutilizable `cargarCategoria()` que recibe los datos y el contenedor destino. Esto permite escalar el proyecto (agregar nuevas categorías como "Bombillas") con una sola línea de código, sin duplicar lógica.
-
+    Se implementó una función reutilizable `cargarCategoria()` que recibe los datos y el contenedor destino. 
 4.  **Manipulación del DOM:**
     JavaScript recorre los arrays filtrados e inyecta el HTML de las tarjetas (`Template Strings`) dentro de los contenedores vacíos del HTML, aplicando estilos CSS automáticamente.
 
-## 📦 Instalación y Uso
-
-Debido a que el proyecto utiliza `fetch` para leer archivos locales, necesita ejecutarse sobre un servidor HTTP para evitar bloqueos de seguridad (CORS).
-
-1.  Clonar el repositorio:
-    ```bash
-    git clone [https://github.com/Garone45/Catalogo-web-MatesPirru.git](https://github.com/Garone45/Catalogo-web-MatesPirru.git)
-    ```
-2.  Abrir la carpeta del proyecto en **Visual Studio Code**.
-3.  Utilizar la extensión **Live Server** para lanzar la web:
-    * Click derecho en `index.html` -> *Open with Live Server*.
 
 ## 👨‍💻 Autor
 
