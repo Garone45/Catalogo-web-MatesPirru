@@ -2,10 +2,52 @@ import React, { useState, useEffect, useRef } from 'react';
 import Draggable from 'react-draggable';
 import { libreriaDisenos } from "./disenosGrabados";
 
+// Componente auxiliar para envolver cada elemento arrastrable con su ref y callbacks de arrastre
+const ItemArrastrable = ({ el, onEliminar, onDragStart, onDragStop }) => {
+  const itemRef = useRef(null);
+
+  return (
+    <Draggable 
+      nodeRef={itemRef} 
+      bounds="parent" 
+      cancel=".btn-eliminar-sticker"
+      grid={[5, 5]} // Salto magnético sutil cada 5px para facilitar el centrado
+      onStart={onDragStart}
+      onStop={onDragStop}
+    >
+      <div ref={itemRef} className="sticker-grabado">
+        {el.url ? (
+          <img src={el.url} alt={el.nombre || "grabado"} />
+        ) : (
+          <div className="icono-vectorial">
+            {el.icono}
+          </div>
+        )}
+        <button 
+          type="button"
+          className="btn-eliminar-sticker"
+          onClick={(e) => {
+            e.stopPropagation();
+            onEliminar(el.id);
+          }}
+          onTouchEnd={(e) => {
+            e.stopPropagation();
+            onEliminar(el.id);
+          }}
+          title="Eliminar"
+        >
+          ×
+        </button>
+      </div>
+    </Draggable>
+  );
+};
+
 const EditorVirola = () => {
   const [elementos, setElementos] = useState([]);
   const [menuVisible, setMenuVisible] = useState(false);
   const [busqueda, setBusqueda] = useState('');
+  const [estaArrastrando, setEstaArrastrando] = useState(false); // Estado para encender/apagar guías
   const seccionRef = useRef(null);
 
   useEffect(() => {
@@ -22,6 +64,7 @@ const EditorVirola = () => {
   const agregarElemento = (diseno) => {
     const nuevoElemento = { 
       id: Date.now(), 
+      nombre: diseno.nombre,
       url: diseno.url,     
       icono: diseno.icono, 
       x: 0, 
@@ -30,12 +73,17 @@ const EditorVirola = () => {
     setElementos([...elementos, nuevoElemento]);
   };
 
+  const eliminarElemento = (id) => {
+    setElementos(elementos.filter((item) => item.id !== id));
+  };
+
   const limpiarLienzo = () => setElementos([]);
 
   return (
     <section className="editor-seccion" ref={seccionRef}>
       <div className="editor-layout">
         
+        {/* COLUMNA / BANDEJA: MENÚ DE DISEÑOS */}
         <aside className={`menu-lateral ${menuVisible ? 'visible' : ''}`}>
           <div className="menu-contenido">
             <h3>Diseños</h3>
@@ -50,15 +98,12 @@ const EditorVirola = () => {
             </div>
             
             <div className="grilla-libreria">
-              {/* MAPEAMOS LAS CATEGORÍAS */}
               {libreriaDisenos.map((categoria) => {
-                // Filtramos los items de esta categoría
-                const itemsFiltrados = categoria.items.filter(item => 
+                const itemsFiltrados = categoria.items.filter((item) => 
                   item.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-                  (item.tags && item.tags.some(tag => tag.toLowerCase().includes(busqueda.toLowerCase())))
+                  (item.tags && item.tags.some((tag) => tag.toLowerCase().includes(busqueda.toLowerCase())))
                 );
 
-                // Si no hay coincidencias en esta categoría, no mostramos el título ni la grilla
                 if (itemsFiltrados.length === 0) return null;
 
                 return (
@@ -68,6 +113,7 @@ const EditorVirola = () => {
                       {itemsFiltrados.map((item) => (
                         <button 
                           key={item.id} 
+                          type="button"
                           onClick={() => agregarElemento(item)} 
                           className="btn-item-icon"
                           title={item.nombre}
@@ -82,12 +128,17 @@ const EditorVirola = () => {
             </div>
 
             <div className="acciones-finales">
-              <button onClick={limpiarLienzo} className="btn-limpiar">Limpiar</button>
-              <button className="btn-whatsapp-envio">Guardar y Pedir</button>
+              <button type="button" onClick={limpiarLienzo} className="btn-limpiar">
+                Limpiar
+              </button>
+              <button type="button" className="btn-whatsapp-envio">
+                Guardar y Pedir
+              </button>
             </div>
           </div>
         </aside>
 
+        {/* COLUMNA: LIENZO DE LA VIROLA */}
         <div className="lienzo-contenedor">
           <div className="editor-header">
             <h2>Personalizá tu Grabado</h2>
@@ -95,19 +146,20 @@ const EditorVirola = () => {
           </div>
 
           <div className="lienzo-virola">
+            {/* LÍNEAS GUÍA DE CENTRADO (ESTILO INSTAGRAM) */}
+            <div className={`guias-centrado ${estaArrastrando ? 'activas' : ''}`}>
+              <span className="guia-eje vertical" />
+              <span className="guia-eje horizontal" />
+            </div>
+
             {elementos.map((el) => (
-              <Draggable key={el.id} bounds="parent">
-                <div className="sticker-grabado">
-                  {el.url ? (
-                    <img src={el.url} alt="grabado" />
-                  ) : (
-                    <div className="icono-vectorial" style={{ fontSize: '40px', color: '#333' }}>
-                      {el.icono}
-                    </div>
-                  )}
-                  <button className="btn-eliminar" onClick={() => setElementos(elementos.filter(item => item.id !== el.id))}>×</button>
-                </div>
-              </Draggable>
+              <ItemArrastrable 
+                key={el.id} 
+                el={el} 
+                onEliminar={eliminarElemento}
+                onDragStart={() => setEstaArrastrando(true)}
+                onDragStop={() => setEstaArrastrando(false)}
+              />
             ))}
           </div>
         </div>

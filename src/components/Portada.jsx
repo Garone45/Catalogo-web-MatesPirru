@@ -1,28 +1,25 @@
 import React from 'react';
-
-// 1. REVISÁ ESTA RUTA: Asegurate de que "fondo-portada.webp" 
-// exista adentro de la carpeta "img" que está en "src".
-import fondoMates from '/img/fondo-portada.webp'; 
+import fondoMates from '/img/fondo-portada.webp';
+import logoBlanco from '/img/logo-matespirru-blanco.webp';
 
 function Portada() {
   return (
     <section 
       className="portada" 
       style={{
-        background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${fondoMates})`,
+        background: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${fondoMates})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center top' /* Prioriza la parte superior de la foto */
       }}
     >
       <div className="contenido-portada">
         <img 
-            src="./img/logo-matespirru-blanco.webp" 
-            alt="Mates Pirru" 
-            className="logo-portada" 
-            fetchpriority="high" 
+          src={logoBlanco} 
+          alt="Mates Pirru" 
+          className="logo-portada" 
+          fetchpriority="high" 
         />
-        {/* En tu Portada.jsx, cambiá el <p> por esto: */}
-<p className="eslogan-pro">Si te acompaña MatesPirru, elegiste bien!</p>
+        <p className="eslogan-pro">Si te acompaña MatesPirru, elegiste bien!</p>
         <a href="#mates-seccion" className="btn-coleccion">
           Ver Colección
         </a>

@@ -100,7 +100,6 @@ function App() {
                 <Carrusel titulo="Mates Camioneros" categoria="camionero" productos={productos} alHacerClick={abrirZoom} />
                 <Carrusel titulo="Mates Criollos" categoria="criollo" productos={productos} alHacerClick={abrirZoom} />
             </div>
-            <EditarVirola />
 
             <div id="accesorios-seccion">
                 <div className="bloque-separador">
@@ -112,6 +111,7 @@ function App() {
                 <Carrusel titulo="Yerbas" categoria="yerba" productos={productos} alHacerClick={abrirZoom} />
             </div>
 
+            <EditarVirola />
             <Beneficios />
           </>
         )}

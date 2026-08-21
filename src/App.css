@@ -12,8 +12,10 @@
 /* --- ESTILOS DEL MODAL (ZOOM DE FOTOS) --- */
 .modal-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: center;
@@ -33,9 +35,12 @@
 
 .btn-cerrar-modal {
   position: absolute;
-  top: -40px; right: 0;
-  background: none; border: none;
-  color: white; font-size: 2rem;
+  top: -40px; 
+  right: 0;
+  background: none; 
+  border: none;
+  color: white; 
+  font-size: 2rem;
   cursor: pointer;
 }
 
@@ -49,7 +54,7 @@
    ========================================== */
 .editor-seccion {
   padding: 80px 20px;
-  background-color: #f9fbf9; /* Un fondo apenas verdoso muy suave */
+  background-color: #f9fbf9;
 }
 
 .editor-layout {
@@ -92,7 +97,6 @@
   border-radius: 0 20px 20px 0;
   box-shadow: 5px 0 20px rgba(0,0,0,0.15);
   z-index: 10;
-  /* Animación de entrada */
   transform: translateX(-100%);
   transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -128,7 +132,9 @@
   outline: none;
 }
 
-.buscador-canva input:focus { border-color: #25D366; }
+.buscador-canva input:focus { 
+  border-color: #25D366; 
+}
 
 .grilla-libreria {
   display: flex;
@@ -139,23 +145,40 @@
   padding-right: 5px;
 }
 
-.item-libreria {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  border: none;
-  padding: 12px 15px;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
+.seccion-categoria h4 {
+  color: #25D366;
+  font-size: 0.9rem;
+  text-align: left;
+  margin: 15px 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.item-libreria:hover { transform: scale(1.03); background-color: #f0f0f0; }
+.iconos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
 
-.nombre-item { color: #2c3e50; font-weight: 600; }
-.icono-add { color: #25D366; font-weight: bold; font-size: 1.2rem; }
+.btn-item-icon {
+  aspect-ratio: 1 / 1;
+  background-color: #34495e;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-item-icon:hover {
+  background-color: #25D366;
+  color: #1a1a1a;
+  transform: translateY(-2px);
+}
 
 .acciones-finales {
   margin-top: 30px;
@@ -183,26 +206,114 @@
   border: 3px solid #333;
   background-color: transparent;
   position: relative;
+  overflow: hidden;
 }
 
 .lienzo-virola::after {
   content: "";
   position: absolute;
-  top: 75px; left: 75px; right: 75px; bottom: 75px;
+  top: 75px; 
+  left: 75px; 
+  right: 75px; 
+  bottom: 75px;
   border-radius: 50%;
   border: 3px solid #333;
   pointer-events: none;
+  z-index: 2;
 }
 
-/* Los grabados que se arrastran */
+/* --- GUÍAS DE ALINEACIÓN (ESTILO CANVA) --- */
+.guias-centrado {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+  z-index: 4; /* Queda sobre el fondo pero debajo del sticker */
+}
+
+.guias-centrado.activas {
+  opacity: 1 !important;
+}
+
+.guia-eje.vertical {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  border-left: 2px dashed #00c4cc;
+  transform: translateX(-50%);
+}
+
+.guia-eje.horizontal {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-top: 2px dashed #00c4cc;
+  transform: translateY(-50%);
+}
+
+/* --- ELEMENTOS ARRASTRABLES (STICKERS) --- */
 .sticker-grabado {
   position: absolute;
-  cursor: move;
+  top: 35%;
+  left: 35%;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  z-index: 10; /* Siempre por encima de las guías y del lienzo */
 }
 
-.sticker-grabado img, .icono-vectorial {
-  max-width: 60px;
-  max-height: 60px;
+.sticker-grabado:active {
+  cursor: grabbing;
+}
+
+.icono-vectorial {
+  font-size: 26px;
+  color: #1a252f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.sticker-grabado img {
+  max-width: 32px;
+  max-height: 32px;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.btn-eliminar-sticker {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #e74c3c;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  z-index: 15;
 }
 
 /* ==========================================
@@ -226,95 +337,297 @@
   font-weight: bold;
   cursor: pointer;
 }
-.seccion-categoria h4 {
-  color: #25D366; /* Verde Pirru para los títulos */
-  font-size: 0.9rem;
-  text-align: left;
-  margin: 15px 0 10px 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.nav-item-mobile {
+  display: none;
 }
 
-.iconos-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 iconos por fila */
-  gap: 10px;
-}
-
-.btn-item-icon {
-  aspect-ratio: 1 / 1;
-  background-color: #34495e; /* Fondo un poco más claro que el menú */
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 8px;
-  color: white;
-  font-size: 1.5rem; /* Tamaño del icono */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-item-icon:hover {
-  background-color: #25D366;
-  color: #1a1a1a;
-  transform: translateY(-2px);
+.nav-item-pc {
+  display: inline-block;
 }
 
 /* ==========================================
    6. RESPONSIVE (MOBILE)
    ========================================== */
 @media (max-width: 768px) {
-  .editor-seccion { padding: 40px 15px; }
-  .editor-header h2 { font-size: 2rem; }
-  .editor-header p { font-size: 1.1rem; }
+ 
+  /* ==========================================
+     1. NAVBAR MÓVIL: ENLACES A LA DERECHA
+     ========================================== */
+  .navbar {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    padding: 12px 16px !important;
+    background-color: #1e6b37 !important;
+  }
+
+  .nav-logo,
+  .nav-centro {
+    display: none !important;
+  }
+
+  /* Ocultamos los botones individuales en celu y mostramos el texto unificado */
+  .nav-item-pc {
+    display: none !important;
+  }
+
+  .nav-item-mobile {
+    display: block !important;
+  }
+
+  .nav-menu {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .nav-menu li a {
+    font-size: 0.95rem !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.3px !important;
+  }
+
+
+  .portada {
+    min-height: auto !important;
+    height: 240px !important;
+    max-height: 38vh !important;
+    padding: 20px 14px 16px 14px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-position: center 45% !important; /* Desplaza el fondo más abajo para que se luzcan los mates */
+    background-size: cover !important;
+  }
+
+  .contenido-portada {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 6px !important;
+    width: 100% !important;
+    padding-top: 10px !important; /* Baja el logo y el slogan unos píxeles */
+  }
+
+  .logo-portada {
+    width: 130px !important;
+    max-width: 58% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto 2px auto !important;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.7)) !important;
+  }
+
+  .eslogan-pro {
+    font-size: 0.85rem !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.85) !important;
+    margin: 2px 0 8px 0 !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    padding: 0 8px !important;
+  }
+
+  .btn-coleccion {
+    background-color: #2e7d32 !important;
+    color: #ffffff !important;
+    padding: 6px 20px !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    border-radius: 20px !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.35) !important;
+  }
+  .bloque-central {
+    display: none !important;
+  }
+  /* ==========================================
+     3. EDITOR DE VIROLA (MOBILE)
+     ========================================== */
+  .editor-seccion { 
+    padding: 20px 12px; 
+    background-color: #eaf4eb;
+  }
+
+  .editor-header {
+    margin-top: 5px;
+    margin-bottom: 12px;
+  }
+
+  .editor-header h2 { 
+    font-size: 1.4rem; 
+    margin-bottom: 4px;
+  }
+
+  .editor-header p { 
+    font-size: 0.85rem; 
+    margin-bottom: 8px;
+  }
 
   .editor-layout {
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 12px;
+  }
+
+  .lienzo-virola { 
+    max-width: 230px; 
+    border-width: 2px;
+    margin: 0 auto 10px auto;
+  }
+
+  .lienzo-virola::after { 
+    top: 38px; 
+    left: 38px; 
+    right: 38px; 
+    bottom: 38px; 
+    border-width: 2px;
+  }
+
+  .sticker-grabado img,
+  .icono-vectorial {
+    max-width: 34px;
+    max-height: 34px;
+    font-size: 22px !important;
   }
 
   .menu-lateral {
     width: 100%;
-    max-width: 400px;
-    position: relative;
+    max-width: 100%;
+    min-height: auto;
+    position: static;
     top: 0;
-    border-radius: 20px;
-    transform: none; /* En celu que aparezca siempre */
+    border-radius: 16px;
+    transform: none;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
   }
 
-  .lienzo-virola { max-width: 320px; }
-  .lienzo-virola::after { top: 45px; left: 45px; right: 45px; bottom: 45px; }
-  .btn-item-icon {
-    font-size: 1.2rem;
-    padding: 8px;
+  .menu-contenido {
+    padding: 12px 14px;
   }
 
-  /* 2. Achicamos los títulos de categorías y el buscador */
-  .seccion-categoria h4 {
-    font-size: 0.75rem;
-    margin: 10px 0 5px 0;
+  .menu-lateral h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
   }
 
   .buscador-canva input {
-    padding: 8px;
-    font-size: 0.9rem;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
   }
 
-  /* 3. Reducimos el padding del contenedor del menú */
-  .menu-contenido {
-    padding: 15px;
+  .seccion-categoria h4 {
+    font-size: 0.75rem;
+    margin: 8px 0 4px 0;
   }
 
-  /* 4. Ponemos 4 íconos por fila en lugar de 3 para ganar espacio vertical */
+  .grilla-libreria {
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 2px;
+  }
+
   .iconos-grid {
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 6px;
+  }
+
+  .btn-item-icon {
+    flex: 0 0 48px;
+    height: 48px;
+    font-size: 1.2rem;
+    padding: 6px;
+  }
+
+  .acciones-finales {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
     gap: 8px;
   }
 
-  /* 5. Altura máxima más corta para que no tape todo el mate al scrollear */
-  .grilla-libreria {
-    max-height: 250px;
+  .btn-limpiar,
+  .btn-whatsapp-envio {
+    flex: 1;
+    padding: 10px 8px;
+    font-size: 0.85rem;
+  }
+  /* ==========================================
+     FRANJA DE BENEFICIOS COMPACTA Y DIVISORIA (MOBILE)
+     ========================================== */
+  .contenedor-beneficios-full {
+    background-color: #ffffff !important; /* Resalta sobre el fondo claro */
+    border-top: 1px solid rgba(30, 107, 55, 0.15) !important; /* Línea divisoria sutil */
+    border-bottom: none !important;  
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03) !important;
+    padding: 12px 8px !important; /* Altura muy reducida */
+    margin-top: 25px !important; /* Separa del editor de virola */
+    margin-bottom: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  footer,
+  .footer-seccion,
+  .pie-pagina {
+    margin-top: 0 !important;
+  }
+
+  .fila-beneficios {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px 6px !important; /* Mínima separación vertical y horizontal */
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .bloque-item {
+    display: flex !important;
+    flex-direction: row !important; /* Ícono al lado del texto para ahorrar altura */
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: left !important;
+    gap: 6px !important;
+    padding: 4px 2px !important;
+  }
+
+  .bloque-item i {
+    font-size: 1.1rem !important; /* Ícono chico y discreto */
+    color: #1e6b37 !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .bloque-item h3 {
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+    color: #2c3e50 !important;
+  }
+
+  .bloque-item p {
+    display: none !important; /* Oculta la bajada en celu para máxima compacidad */
+  }
+
+  .bloque-item .link-ig {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 6px !important;
+    text-decoration: none !important;
+    color: inherit !important;
   }
 }
